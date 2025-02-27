@@ -1,16 +1,41 @@
-export default {
+import { DefaultTheme } from 'styled-components';
+const theme: DefaultTheme = {
   colors: {
     black: '#000000',
     white: '#ffffff',
+
     primary: '#495E57',
     secondary: '#F4CE14',
-    tertiary: '#EE9972',
-    quaternary: '#FBDABB',
-    highlight_light: '#EDEDEE',
-    highlight_dark: '#333333',
+    disabled: '#BDBDBD',
+    focused: '#0077B6',
+
+    primary_text: '#212121',
+    secondary_text: '#757575',
+    disabled_text: '#9E9E9E',
+    focused_text: '#0077B6',
+
+    primary_background: '#F5F5F5',
+    secondary_background: '#E0E0E0',
+
+    primary_highlight: '#FBDABB',
+    secondary_highlight: '#EE9972',
+
+    primary_outline: '#495E57',
+    secondary_outline: '#F4CE14',
+    disabled_outline: '#BDBDBD',
+    focused_outline: '#0077B6',
+
+    primary_component: '#EDEDEE',
+    secondary_component: '#333333',
+    disabled_component: '#BDBDBD',
+    focused_component: '#0077B6',
   },
   border: {
-    radius: '1.6rem',
+    radius: {
+      small: '0.8rem',
+      medium: '1.6rem',
+      large: '2.4rem',
+    },
   },
   font: {
     family: {
@@ -33,3 +58,5 @@ export default {
     },
   },
 };
+
+export default theme;
