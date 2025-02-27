@@ -1,14 +1,14 @@
 import { BrowserRouter } from 'react-router';
-import { Global, ThemeProvider } from '@emotion/react';
-import styles from './styles/global';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './styles/global';
 import theme from './styles/theme';
 import Routes from './routes';
 
 function App() {
   return (
-    <BrowserRouter basename='/little-lemon'>
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Global styles={styles} />
+        <GlobalStyles />
         <Routes />
       </ThemeProvider>
     </BrowserRouter>
