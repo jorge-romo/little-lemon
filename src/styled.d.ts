@@ -12,12 +12,16 @@ declare module 'styled-components' {
       focused: string;
       primary_text: string;
       secondary_text: string;
+      tertiary_text: string;
+      highlight_primary_text: string;
+      highlight_secondary_text: string;
+      highlight_tertiary_text: string;
       disabled_text: string;
       focused_text: string;
       primary_background: string;
       secondary_background: string;
-      primary_highlight: string;
-      secondary_highlight: string;
+      tertiary_background: string;
+      card_background: string;
       primary_outline: string;
       secondary_outline: string;
       disabled_outline: string;
@@ -37,22 +41,34 @@ declare module 'styled-components' {
     font: {
       family: {
         primary: string;
-        secondary: string;
+        heading: string;
       };
       weight: {
-        regular: number;
+        normal: number;
         medium: number;
         bold: number;
         extrabold: number;
       };
       size: {
-        small: string;
-        medium: string;
-        large: string;
-        xlarge: string;
-        xxlarge: string;
-        huge: string;
+        '2xs': string;
+        xs: string;
+        sm: string;
+        md: string;
+        lg: string;
+        xl: string;
+        '2xl': string;
+        '3xl': string;
+        '4xl': string;
+        '5xl': string;
+        '6xl': string;
+        '7xl': string;
+        '8xl': string;
+        '9xl': string;
       };
     };
+    breakpoints: {
+      mobile: number;
+    };
+    maxwidth: number;
   }
 }
