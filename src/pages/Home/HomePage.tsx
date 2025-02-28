@@ -3,12 +3,14 @@ import {
   PageContainer,
   ScrollToHashElement,
   SpecialsSection,
+  HeroSection,
 } from '../../components';
 
 const HomePage: FC = () => {
   return (
     <PageContainer>
       <ScrollToHashElement behavior='smooth' />
+      <HeroSection />
       <SpecialsSection id='menu' />
     </PageContainer>
   );

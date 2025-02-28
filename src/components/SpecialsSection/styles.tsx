@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  padding: 1rem 0;
+  padding: 2rem 0;
 `;
 
 export const Head = styled.div`

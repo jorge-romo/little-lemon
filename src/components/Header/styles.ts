@@ -8,6 +8,7 @@ export const Container = styled.header`
   background-color: transparent;
   z-index: 1;
   transition: transform 0.5s ease-in-out;
+  background-color: ${({ theme }) => theme.colors.primary_background};
 `;
 
 export const Content = styled.div`
@@ -15,7 +16,6 @@ export const Content = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.maxwidth + 'px'};
   margin: 0 auto;
-  background-color: ${({ theme }) => theme.colors.primary_background};
   display: flex;
   justify-content: space-between;
   align-items: center;
