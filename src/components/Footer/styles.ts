@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.footer`
-  background: ${({ theme }) => theme.colors.tertiary_background};
+  background: ${({ theme }) => theme.colors.dark_background};
   color: ${({ theme }) => theme.colors.tertiary_text};
 `;
 

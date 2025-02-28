@@ -4,6 +4,7 @@ import {
   ScrollToHashElement,
   SpecialsSection,
   HeroSection,
+  TestimonialsSection,
 } from '../../components';
 
 const HomePage: FC = () => {
@@ -12,6 +13,7 @@ const HomePage: FC = () => {
       <ScrollToHashElement behavior='smooth' />
       <HeroSection />
       <SpecialsSection id='menu' />
+      <TestimonialsSection />
     </PageContainer>
   );
 };

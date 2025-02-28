@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  padding: 2rem 0;
+  padding: 2rem 2rem 4rem;
 `;
 
 export const Head = styled.div`
@@ -32,7 +32,6 @@ export const Item = styled.div`
 
 export const Items = styled.div`
   position: relative;
-  width: 100%;
   display: grid;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.laptop + 1 + 'px'}) {

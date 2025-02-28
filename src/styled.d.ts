@@ -21,6 +21,7 @@ declare module 'styled-components' {
       primary_background: string;
       secondary_background: string;
       tertiary_background: string;
+      dark_background: string;
       card_background: string;
       primary_outline: string;
       secondary_outline: string;

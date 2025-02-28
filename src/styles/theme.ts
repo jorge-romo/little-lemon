@@ -20,8 +20,9 @@ const theme: DefaultTheme = {
 
     primary_background: '#FFFFFF',
     secondary_background: '#495E57',
-    tertiary_background: '#333333',
+    tertiary_background: '#FBDABB',
     card_background: '#EDEFEE',
+    dark_background: '#333333',
 
     primary_outline: '#EDEFEE',
     secondary_outline: '#495E57',

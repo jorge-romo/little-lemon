@@ -4,6 +4,7 @@ export const Container = styled.section`
   display: flex;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.white};
+  padding: 2rem;
 
   &::before {
     content: '';
@@ -20,7 +21,7 @@ export const Container = styled.section`
 export const Content = styled.div`
   margin-top: 4rem;
 
-  h1 {
+  .name {
     font-family: ${({ theme }) => theme.font.family.heading};
     font-size: ${({ theme }) => theme.font.size['7xl']};
     font-weight: ${({ theme }) => theme.font.weight.normal};
@@ -28,14 +29,14 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  h2 {
+  .location {
     font-family: ${({ theme }) => theme.font.family.heading};
     font-size: ${({ theme }) => theme.font.size['5xl']};
     font-weight: ${({ theme }) => theme.font.weight.normal};
     line-height: 0.8;
   }
 
-  p {
+  .description {
     font-size: ${({ theme }) => theme.font.size['lg']};
     font-weight: ${({ theme }) => theme.font.weight.normal};
     margin: 1rem 0;

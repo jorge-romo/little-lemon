@@ -8,9 +8,9 @@ const HeroSection: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   return (
     <Container {...props}>
       <Content>
-        <h1>Little Lemon</h1>
-        <h2>Chicago</h2>
-        <p className='lead-txt'>
+        <h1 className='name'>Little Lemon</h1>
+        <p className='location'>Chicago</p>
+        <p className='description'>
           We are family owned Mediterranean restaurant, focused on traditional
           recipes served with a modern twist.
         </p>

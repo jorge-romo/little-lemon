@@ -7,5 +7,7 @@ export { default as Nav } from './Nav';
 export { default as PageContainer } from './PageContainer';
 export { default as SpecialFoodCard } from './SpecialFoodCard';
 export { default as SpecialsSection } from './SpecialsSection';
+export { default as TestimonialCard } from './TestimonialCard';
+export { default as TestimonialsSection } from './TestimonialsSection';
 export { default as ScrollToHashElement } from './ScrollToHashElement';
 export { ChakraUiProvider } from './ui/provider';
