@@ -1,8 +1,8 @@
-import React from 'react';
+import type { FC } from 'react';
 import { PageContainer } from '../../components';
 import { Container, Heading, Text, TextContainer } from './styles';
 
-const NotFoundPage: React.FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <PageContainer>
       <Container>

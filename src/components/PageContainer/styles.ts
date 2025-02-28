@@ -6,5 +6,5 @@ export const Container = styled.div`
   max-width: ${({ theme }) => theme.maxwidth + 'px'};
   min-height: 80vh;
   margin: 0 auto;
-  padding-top: 6.5rem;
+  padding: 8.5rem 2rem 2rem 2rem;
 `;

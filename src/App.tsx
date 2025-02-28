@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/global';
 import theme from './styles/theme';
+import { ChakraUiProvider } from './components';
 import Routes from './routes';
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Routes />
+        <ChakraUiProvider>
+          <Routes />
+        </ChakraUiProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

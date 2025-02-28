@@ -1,36 +1,22 @@
 import type { PropsWithChildren } from 'react';
 import { Link, NavLink } from 'react-router';
-import { WebTarget } from 'styled-components';
+import type { WebTarget } from 'styled-components';
+import clsx from 'clsx';
 import {
   ButtonContainer,
   LinkButtonContainer,
   NavLinkButtonContainer,
 } from './styles';
-import { ButtonProps } from './types';
+import type { IconButtonProps } from './types';
 
-function Button<
+function IconButton<
   AsTarget extends WebTarget | typeof Link | typeof NavLink = 'button',
->(props: PropsWithChildren<ButtonProps<AsTarget>>) {
-  const {
-    as,
-    variant,
-    size,
-    color,
-    rounded,
-    startIcon,
-    endIcon,
-    children,
-    ...rest
-  } = props;
+>(props: PropsWithChildren<IconButtonProps<AsTarget>>) {
+  const { as, variant, size, color, rounded, className, children, ...rest } =
+    props;
 
-  const renderContent = (): React.ReactNode => {
-    return (
-      <>
-        {!!startIcon && <span className='icon start'>{startIcon}</span>}
-        <span className='content'>{children}</span>
-        {!!endIcon && <span className='icon end'>{endIcon}</span>}
-      </>
-    );
+  const renderContent = () => {
+    return <span className='icon'>{children}</span>;
   };
 
   if (as === NavLink) {
@@ -41,7 +27,7 @@ function Button<
         size={size}
         color={color}
         rounded={rounded}
-        {...rest}
+        className={clsx(className, 'icon-button')}
       >
         {renderContent()}
       </NavLinkButtonContainer>
@@ -56,7 +42,7 @@ function Button<
         size={size}
         color={color}
         rounded={rounded}
-        {...rest}
+        className={clsx(className, 'icon-button')}
       >
         {renderContent()}
       </LinkButtonContainer>
@@ -70,6 +56,7 @@ function Button<
       size={size}
       color={color}
       rounded={rounded}
+      className={clsx(className, 'icon-button')}
       {...rest}
     >
       {renderContent()}
@@ -77,4 +64,4 @@ function Button<
   );
 }
 
-export default Button;
+export default IconButton;

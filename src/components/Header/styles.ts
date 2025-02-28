@@ -19,23 +19,17 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
     .desktop-only {
       display: none;
     }
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile + 1 + 'px'}) {
-    .mobile-only {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet + 1 + 'px'}) {
+    .touchscreen-only {
       display: none;
     }
   }
-`;
-
-export const Logo = styled.img`
-  position: relative;
-  height: 64px;
-  object-fit: contain;
 `;

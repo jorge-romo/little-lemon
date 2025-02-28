@@ -16,36 +16,40 @@ export const Copyright = styled.div`
 
 export const Content = styled.div`
   max-width: ${({ theme }) => theme.maxwidth + 'px'};
+  padding: 3rem 2rem 2rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
     flex-direction: column;
   }
 `;
 
 export const Image = styled.img`
+  display: block;
   width: 16rem;
   height: 28rem;
   object-fit: cover;
-  margin-top: 4.5rem;
   border-radius: 0.5rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
     display: none;
   }
 `;
 
 export const Column = styled.div`
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  margin-top: 4.5rem;
-  padding-top: 3rem;
+  margin-top: 3rem;
 
   h5 {
     height: 4.5rem;
+    white-space: nowrap;
   }
 
   ul {
@@ -55,6 +59,7 @@ export const Column = styled.div`
 
     li {
       list-style: none;
+      white-space: nowrap;
     }
   }
 `;

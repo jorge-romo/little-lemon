@@ -1,7 +1,7 @@
-import React from 'react';
+import type { FC } from 'react';
 import { PageContainer } from '../../components';
 
-const BookingPage: React.FC = () => {
+const BookingPage: FC = () => {
   return <PageContainer></PageContainer>;
 };
 

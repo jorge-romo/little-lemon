@@ -1,21 +1,15 @@
-import React from 'react';
-import { PageContainer, ScrollToHashElement } from '../../components';
+import type { FC } from 'react';
+import {
+  PageContainer,
+  ScrollToHashElement,
+  SpecialsSection,
+} from '../../components';
 
-const HomePage: React.FC = () => {
+const HomePage: FC = () => {
   return (
     <PageContainer>
       <ScrollToHashElement behavior='smooth' />
-      <section
-        style={{ background: 'blue', minHeight: '100vh', width: '100%' }}
-      ></section>
-      <section
-        id='about'
-        style={{ background: 'red', minHeight: '100vh', width: '100%' }}
-      ></section>
-      <section
-        id='menu'
-        style={{ background: 'green', minHeight: '100vh', width: '100%' }}
-      ></section>
+      <SpecialsSection id='menu' />
     </PageContainer>
   );
 };

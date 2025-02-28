@@ -4,6 +4,7 @@ export default createGlobalStyle`
 :root {
   font-family: ${({ theme }) => theme.font.family.primary};
   font-size: 16px;
+  line-height: 1.5;
   background-color: ${({ theme }) => theme.colors.primary_background};
   color: ${({ theme }) => theme.colors.black};
   -webkit-font-smoothing: antialiased;
@@ -13,11 +14,6 @@ export default createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-};
-
-input, button, textarea {
-  font-family: ${({ theme }) => theme.font.family.primary};
-  font-size: ${({ theme }) => theme.font.size.md};
   outline: none;
 };
 
@@ -25,12 +21,14 @@ h1 {
   font-family: ${({ theme }) => theme.font.family.heading};
   font-size: ${({ theme }) => theme.font.size['8xl']};
   font-weight: ${({ theme }) => theme.font.weight.medium};
+  line-height: 1.5;
 };
 
 h2 {
   font-family: ${({ theme }) => theme.font.family.heading};
   font-size: ${({ theme }) => theme.font.size['7xl']};
   font-weight: ${({ theme }) => theme.font.weight.normal};
+  line-height: 1.5;
 };
 
 h3 {
@@ -38,48 +36,43 @@ h3 {
   font-size: ${({ theme }) => theme.font.size['6xl']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
   text-transform: uppercase;
+  line-height: 1.5;
 };
 
 h4 {
   font-family: ${({ theme }) => theme.font.family.heading};
   font-size: ${({ theme }) => theme.font.size['5xl']};
   font-weight: ${({ theme }) => theme.font.weight.extrabold};
+  line-height: 1.5;
 };
 
 h5 {
   font-family: ${({ theme }) => theme.font.family.heading};
   font-size: ${({ theme }) => theme.font.size['4xl']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
+  line-height: 1.5;
 };
 
 h6 {
   font-family: ${({ theme }) => theme.font.family.heading};
   font-size: ${({ theme }) => theme.font.size['2xl']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
-};
-
-.lead-txt {
-  font-weight: ${({ theme }) => theme.font.weight.medium};
-};
-
-.highlight {
-  font-weight: ${({ theme }) => theme.font.weight.medium};
-};
-
-.card-title {
-  font-family: ${({ theme }) => theme.font.family.heading};
-  font-size: ${({ theme }) => theme.font.size.md};
-  font-weight: ${({ theme }) => theme.font.weight.bold};
+  line-height: 1.5;
 };
 
 a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: filter 0.2s;
+  transition: opacity 0.2s;
 }
 
-a:hover {
-  filter: brightness(.9);
+a:hover:not(:disabled),
+a:active:not(:disabled) {
+  opacity: 0.5;
+}
+
+a:disabled {
+  color: ${({ theme }) => theme.colors.disabled_text};
 }
 `;

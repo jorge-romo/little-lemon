@@ -24,14 +24,7 @@ export const Menu = styled.div<HTMLAttributes<HTMLDivElement>>`
   }
 
   .close-button {
-    align-self: flex-start;
+    align-self: flex-end;
     margin: 1rem;
   }
-`;
-
-export const Logo = styled.img`
-  position: relative;
-  height: 64px;
-  object-fit: contain;
-  margin: 1rem;
 `;

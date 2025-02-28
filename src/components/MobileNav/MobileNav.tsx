@@ -1,10 +1,10 @@
 import { useState, FC, HTMLAttributes } from 'react';
-import { Logo, Menu } from './styles';
-import logoImg from '../../assets/logo.svg';
-import menuImg from '../../assets/hamburger-menu-icon.svg';
-import closeImg from '../../assets/close-icon.svg';
 import Nav from '../Nav';
-import Button from '../Button';
+import { IconButton } from '../Button';
+import { Menu } from './styles';
+import LogoIcon from '../../assets/logo.svg?react';
+import MenuIcon from '../../assets/hamburger-menu-icon.svg?react';
+import CloseIcon from '../../assets/close-icon.svg?react';
 
 const MobileNav: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,23 +15,26 @@ const MobileNav: FC<HTMLAttributes<HTMLElement>> = (props) => {
 
   return (
     <div {...props}>
-      <Button
-        className='icon-button'
+      <IconButton
+        variant='secondary'
+        size='lg'
         aria-label='Open menu'
         onClick={handleMenu}
       >
-        <img src={menuImg} alt='Open menu' />
-      </Button>
+        <MenuIcon />
+      </IconButton>
 
       <Menu className={menuOpen ? 'opened' : ''}>
-        <Button
-          className='icon-button close-button'
+        <IconButton
+          className='close-button'
+          variant='secondary'
+          size='lg'
           aria-label='Close menu'
           onClick={handleMenu}
         >
-          <img src={closeImg} alt='Close menu' />
-        </Button>
-        <Logo src={logoImg} alt='Little Lemon Logo' />
+          <CloseIcon />
+        </IconButton>
+        <LogoIcon />
         <Nav className='mobile' />
       </Menu>
     </div>

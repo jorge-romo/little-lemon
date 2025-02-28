@@ -67,7 +67,11 @@ declare module 'styled-components' {
       };
     };
     breakpoints: {
-      mobile: number;
+      mobile: number; // Small devices like phones
+      tablet: number; // Medium devices like tablets
+      laptop: number; // Larger devices like laptops
+      desktop: number; // Desktops and large screens
+      largeDesktop: number; // Large desktop screens
     };
     maxwidth: number;
   }

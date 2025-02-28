@@ -35,9 +35,9 @@ const theme: DefaultTheme = {
   },
   border: {
     radius: {
-      small: '0.8rem',
-      medium: '1.6rem',
-      large: '2.4rem',
+      small: '0.25rem',
+      medium: '0.5rem',
+      large: '1rem',
     },
   },
   font: {
@@ -70,7 +70,11 @@ const theme: DefaultTheme = {
   },
   maxwidth: 1440,
   breakpoints: {
-    mobile: 768,
+    mobile: 576, // Small devices like phones
+    tablet: 768, // Medium devices like tablets
+    laptop: 1024, // Larger devices like laptops
+    desktop: 1280, // Desktops and large screens
+    largeDesktop: 1440, // Large desktop screens
   },
 };
 
