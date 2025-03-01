@@ -1,4 +1,7 @@
-import type { HtmlHTMLAttributes, MouseEvent as ReactMouseEvent } from 'react';
+import type {
+  ComponentPropsWithRef,
+  MouseEvent as ReactMouseEvent,
+} from 'react';
 
 export type NavProps = {
   type?: 'mobile' | 'desktop';
@@ -6,4 +9,4 @@ export type NavProps = {
     e: ReactMouseEvent<HTMLAnchorElement, MouseEvent>,
     to: string
   ) => void;
-} & HtmlHTMLAttributes<HTMLDivElement>;
+} & ComponentPropsWithRef<'div'>;

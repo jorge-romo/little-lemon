@@ -1,9 +1,9 @@
-import { FC, HTMLAttributes } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import { Link } from 'react-router';
 import { Container, Content, Copyright, Column, Image } from './styles';
 import restaurant from '../../assets/restaurant.jpg';
 
-const Footer: FC<HTMLAttributes<HTMLElement>> = (props) => {
+const Footer: FC<ComponentPropsWithRef<'div'>> = (props) => {
   return (
     <Container {...props}>
       <Content>

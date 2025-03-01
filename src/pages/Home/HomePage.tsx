@@ -5,6 +5,7 @@ import {
   SpecialsSection,
   HeroSection,
   TestimonialsSection,
+  AboutSection,
 } from '../../components';
 
 const HomePage: FC = () => {
@@ -14,6 +15,7 @@ const HomePage: FC = () => {
       <HeroSection />
       <SpecialsSection id='menu' />
       <TestimonialsSection />
+      <AboutSection id='about' />
     </PageContainer>
   );
 };

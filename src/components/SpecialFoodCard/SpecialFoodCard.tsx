@@ -1,25 +1,19 @@
-import type { FC, HTMLAttributes } from 'react';
+import type { FC } from 'react';
 import { Text } from '@chakra-ui/react';
 import { Button } from '../Button';
 import { Container, Image, Header, Body, Content, Footer } from './styles';
+import { SpecialFoodCardProps } from './types';
 import DeliveryIcon from '../../assets/delivery.svg?react';
-
-interface SpecialFoodCardProps extends HTMLAttributes<HTMLDivElement> {
-  imageUrl: string;
-  title: string;
-  description: string;
-  price: number;
-}
 
 const SpecialFoodCard: FC<SpecialFoodCardProps> = ({
   imageUrl,
   title,
   price,
   description,
-  ...props
+  ...rest
 }) => {
   return (
-    <Container {...props}>
+    <Container {...rest}>
       <Image src={imageUrl} alt={title} />
       <Content>
         <Header>

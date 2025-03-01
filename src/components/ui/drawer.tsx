@@ -1,17 +1,21 @@
+import type { FC, Ref, RefObject } from 'react';
 import { Drawer as ChakraDrawer, Portal } from '@chakra-ui/react';
-import * as React from 'react';
 
 interface DrawerContentProps extends ChakraDrawer.ContentProps {
   portalled?: boolean;
-  portalRef?: React.RefObject<HTMLElement>;
+  portalRef?: RefObject<HTMLElement>;
   offset?: ChakraDrawer.ContentProps['padding'];
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const DrawerContent = React.forwardRef<
-  HTMLDivElement,
-  DrawerContentProps
->(function DrawerContent(props, ref) {
-  const { children, portalled = true, portalRef, offset, ...rest } = props;
+export const DrawerContent: FC<DrawerContentProps> = ({
+  children,
+  portalled = true,
+  portalRef,
+  offset,
+  ref,
+  ...rest
+}) => {
   return (
     <Portal disabled={!portalled} container={portalRef}>
       <ChakraDrawer.Positioner padding={offset}>
@@ -21,7 +25,7 @@ export const DrawerContent = React.forwardRef<
       </ChakraDrawer.Positioner>
     </Portal>
   );
-});
+};
 
 export const DrawerCloseTrigger = ChakraDrawer.CloseTrigger;
 export const DrawerTrigger = ChakraDrawer.Trigger;

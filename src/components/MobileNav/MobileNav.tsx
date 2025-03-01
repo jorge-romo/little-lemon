@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, useState } from 'react';
+import { FC, ComponentPropsWithRef, useState } from 'react';
 import Nav from '../Nav';
 import { IconButton } from '../Button';
 import {
@@ -15,7 +15,7 @@ import LogoIcon from '../../assets/logo.svg?react';
 import MenuIcon from '../../assets/hamburger-menu-icon.svg?react';
 import CloseIcon from '../../assets/close-icon.svg?react';
 
-const MobileNav: FC<HTMLAttributes<HTMLElement>> = (props) => {
+const MobileNav: FC<ComponentPropsWithRef<'div'>> = (props) => {
   const [open, setOpen] = useState(false);
 
   return (

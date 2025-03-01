@@ -1,5 +1,5 @@
 import '@testing-library/dom';
-import { ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { BrowserRouter } from 'react-router';
 import { render, RenderOptions } from '@testing-library/react';
 
@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/global';
 
-const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+const AllTheProviders = ({ children }: { children: ReactNode }) => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>

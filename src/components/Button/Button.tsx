@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { Link, NavLink } from 'react-router';
 import { WebTarget } from 'styled-components';
 import {
@@ -23,7 +23,7 @@ function Button<
     ...rest
   } = props;
 
-  const renderContent = (): React.ReactNode => {
+  const renderContent = (): ReactNode => {
     return (
       <>
         {!!startIcon && <span className='icon start'>{startIcon}</span>}

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { HTMLAttributes } from 'react';
 
-export const Container = styled.div<HTMLAttributes<HTMLDivElement>>`
+export const Container = styled.div`
   color: ${({ theme }) => theme.colors.primary_text};
   background-color: ${({ theme }) => theme.colors.primary_background};
   border-radius: ${({ theme }) => theme.border.radius.medium};

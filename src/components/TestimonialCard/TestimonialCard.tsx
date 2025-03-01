@@ -1,31 +1,17 @@
-import { FC, HTMLAttributes } from 'react';
+import type { FC } from 'react';
 import { Text, RatingGroup } from '@chakra-ui/react';
 import { Blockquote, Container, Customer } from './styles';
-
-interface TestimonialCardProps extends HTMLAttributes<HTMLDivElement> {
-  rating: number;
-  customerImg: string;
-  customerName: string;
-  testimonial: string;
-}
-
-const starMap: Record<string, string> = {
-  1: '★☆☆☆☆',
-  2: '★★☆☆☆',
-  3: '★★★☆☆',
-  4: '★★★★☆',
-  5: '★★★★★',
-};
+import { starMap, TestimonialCardProps } from './types';
 
 const TestimonialCard: FC<TestimonialCardProps> = ({
   rating,
   customerImg,
   customerName,
   testimonial,
-  ...props
+  ...rest
 }) => {
   return (
-    <Container {...props}>
+    <Container {...rest}>
       <RatingGroup.Root
         colorPalette='yellow'
         readOnly

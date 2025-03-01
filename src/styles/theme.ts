@@ -13,7 +13,7 @@ const theme: DefaultTheme = {
     secondary_text: '#333333',
     tertiary_text: '#FFFFFF',
     highlight_primary_text: '#EE9972',
-    highlight_secondary_text: '#FBDABB',
+    highlight_secondary_text: '#495E57',
     highlight_tertiary_text: '#F4CE14',
     disabled_text: '#9E9E9E',
     focused_text: '#0077B6',

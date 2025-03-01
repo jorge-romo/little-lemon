@@ -1,32 +1,37 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  display: flex;
-  justify-content: space-between;
   color: ${({ theme }) => theme.colors.white};
-  padding: 2rem;
+  background-color: ${({ theme }) => theme.colors.secondary_background};
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 26rem;
-    background-color: ${({ theme }) => theme.colors.secondary_background};
-    z-index: -1;
+  .section-inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    margin-bottom: 10rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+    .section-inner {
+      margin-bottom: 6rem;
+    }
   }
 `;
 
 export const Content = styled.div`
-  margin-top: 4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
   .name {
     font-family: ${({ theme }) => theme.font.family.heading};
     font-size: ${({ theme }) => theme.font.size['7xl']};
     font-weight: ${({ theme }) => theme.font.weight.normal};
     line-height: 0.8;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.highlight_tertiary_text};
   }
 
   .location {
@@ -42,10 +47,18 @@ export const Content = styled.div`
     margin: 1rem 0;
     max-width: 20rem;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 12rem;
+  }
 `;
 
 export const ImageContainer = styled.div`
-  margin-top: 2rem;
+  position: absolute;
+  bottom: -8rem;
+  right: 2rem;
 
   img {
     display: block;
@@ -56,6 +69,13 @@ export const ImageContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
-    display: none;
+    bottom: -4rem;
+    right: 50%;
+    transform: translateX(50%);
+
+    img {
+      width: 24rem;
+      height: 16rem;
+    }
   }
 `;

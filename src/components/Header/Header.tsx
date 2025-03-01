@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect, FC, HTMLAttributes } from 'react';
+import { useState, useRef, useEffect, FC, ComponentPropsWithRef } from 'react';
 import { Link } from 'react-router';
 import Nav from '../Nav';
 import MobileNav from '../MobileNav';
 import { Container, Content } from './styles';
 import LogoIcon from '../../assets/logo.svg?react';
 
-const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
+const Header: FC<ComponentPropsWithRef<'div'>> = (props) => {
   const headerRef = useRef<HTMLElement>(null);
   const [_, setLastScrollPosition] = useState(
     window.pageYOffset || document.documentElement.scrollTop

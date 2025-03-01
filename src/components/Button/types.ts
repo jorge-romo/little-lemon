@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
 import type { WebTarget } from 'styled-components';
 import type { KnownTarget } from 'styled-components/dist/types';
 
@@ -18,7 +18,7 @@ export type ButtonIconProps = {
 export type ButtonBaseProps<
   AsTarget extends WebTarget,
   AsTargetProps extends object = AsTarget extends KnownTarget
-    ? React.ComponentPropsWithRef<AsTarget>
+    ? ComponentPropsWithRef<AsTarget>
     : {},
 > = ExtendedButtonProps<AsTarget> & AsTargetProps;
 
