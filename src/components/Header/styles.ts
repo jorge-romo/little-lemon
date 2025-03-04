@@ -22,14 +22,12 @@ export const Content = styled.div`
   padding: 1rem 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
-    .desktop-only {
-      display: none;
-    }
+    padding: 1rem;
   }
+`;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet + 1 + 'px'}) {
-    .touchscreen-only {
-      display: none;
-    }
-  }
+export const LogoImg = styled.img`
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 `;

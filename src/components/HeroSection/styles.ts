@@ -11,9 +11,15 @@ export const Container = styled.section`
     margin-bottom: 10rem;
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
+    .section-inner {
+      margin-bottom: 8rem;
+    }
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
     .section-inner {
-      margin-bottom: 6rem;
+      margin-bottom: 2rem;
     }
   }
 `;
@@ -23,8 +29,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 
   .name {
     font-family: ${({ theme }) => theme.font.family.heading};
@@ -47,17 +51,11 @@ export const Content = styled.div`
     margin: 1rem 0;
     max-width: 20rem;
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
-    align-items: center;
-    text-align: center;
-    padding-bottom: 12rem;
-  }
 `;
 
 export const ImageContainer = styled.div`
   position: absolute;
-  bottom: -8rem;
+  top: 2rem;
   right: 2rem;
 
   img {
@@ -68,14 +66,16 @@ export const ImageContainer = styled.div`
     border-radius: ${({ theme }) => theme.border.radius.large};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
-    bottom: -4rem;
-    right: 50%;
-    transform: translateX(50%);
-
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
     img {
-      width: 24rem;
-      height: 16rem;
+      width: 20rem;
+      height: 24rem;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+    img {
+      display: none;
     }
   }
 `;

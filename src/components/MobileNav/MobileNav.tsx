@@ -11,9 +11,9 @@ import {
   DrawerTrigger,
 } from '../ui/drawer';
 import { LogoContainer } from './styles';
-import LogoIcon from '../../assets/logo.svg?react';
 import MenuIcon from '../../assets/hamburger-menu-icon.svg?react';
 import CloseIcon from '../../assets/close-icon.svg?react';
+import logoImg from '../../assets/logo.png';
 
 const MobileNav: FC<ComponentPropsWithRef<'div'>> = (props) => {
   const [open, setOpen] = useState(false);
@@ -32,9 +32,9 @@ const MobileNav: FC<ComponentPropsWithRef<'div'>> = (props) => {
             <MenuIcon />
           </IconButton>
         </DrawerTrigger>
-        <DrawerContent background='white' paddingX={8} paddingY={4}>
-          <DrawerHeader display='flex' justifyContent='flex-end'>
-            <DrawerCloseTrigger>
+        <DrawerContent background='white' padding={4}>
+          <DrawerHeader display='flex' justifyContent='flex-start'>
+            <DrawerCloseTrigger asChild>
               <IconButton
                 className='close-button'
                 variant='secondary'
@@ -52,7 +52,7 @@ const MobileNav: FC<ComponentPropsWithRef<'div'>> = (props) => {
             alignItems='center'
           >
             <LogoContainer>
-              <LogoIcon />
+              <img src={logoImg} alt='Little Lemon' />
             </LogoContainer>
             <Nav type='mobile' onClickLink={() => setOpen(false)} />
           </DrawerBody>

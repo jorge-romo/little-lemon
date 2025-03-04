@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`
+const globalStyles = createGlobalStyle`
 :root {
   font-family: ${({ theme }) => theme.font.family.primary};
   font-size: 16px;
@@ -75,4 +75,18 @@ a:active:not(:disabled) {
 a:disabled {
   color: ${({ theme }) => theme.colors.disabled_text};
 }
+
+.desktop-only {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+    display: none !important;
+  }
+}
+
+.touchscreen-only {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet + 1 + 'px'}) {
+    display: none !important;
+  }
+}
 `;
+
+export default globalStyles;

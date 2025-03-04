@@ -2,8 +2,8 @@ import { useState, useRef, useEffect, FC, ComponentPropsWithRef } from 'react';
 import { Link } from 'react-router';
 import Nav from '../Nav';
 import MobileNav from '../MobileNav';
-import { Container, Content } from './styles';
-import LogoIcon from '../../assets/logo.svg?react';
+import { Container, Content, LogoImg } from './styles';
+import logoImg from '../../assets/logo.png';
 
 const Header: FC<ComponentPropsWithRef<'div'>> = (props) => {
   const headerRef = useRef<HTMLElement>(null);
@@ -37,9 +37,11 @@ const Header: FC<ComponentPropsWithRef<'div'>> = (props) => {
   return (
     <Container {...props} ref={headerRef}>
       <Content>
-        <Link to='/'>
-          <LogoIcon height={50} />
-        </Link>
+        <div className='desktop-only'>
+          <Link to='/'>
+            <LogoImg src={logoImg} alt='Little Lemon' />
+          </Link>
+        </div>
         <div>
           <Nav className='desktop-only' />
           <MobileNav className='touchscreen-only' />
