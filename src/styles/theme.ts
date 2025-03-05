@@ -3,6 +3,8 @@ const theme: DefaultTheme = {
   colors: {
     black: '#000000',
     white: '#FFFFFF',
+    light_grey: '#EDEFEE',
+    dark_grey: '#333333',
 
     primary: '#F4CE14',
     secondary: '#EE9972',
@@ -24,13 +26,16 @@ const theme: DefaultTheme = {
     card_background: '#EDEFEE',
     dark_background: '#333333',
 
-    primary_outline: '#EDEFEE',
-    secondary_outline: '#495E57',
+    primary_outline: '#333333',
+    secondary_outline: '#EDEFEE',
     disabled_outline: '#BDBDBD',
     focused_outline: '#0077B6',
 
     primary_component: '#F4CE14',
     secondary_component: '#EE9972',
+    tertiary_component: '#495E57',
+    light_grey_component: '#EDEFEE',
+    dark_grey_component: '#333333',
     disabled_component: '#BDBDBD',
     focused_component: '#0077B6',
   },
@@ -71,11 +76,10 @@ const theme: DefaultTheme = {
   },
   maxwidth: 1440,
   breakpoints: {
-    mobile: 576, // Small devices like phones
-    tablet: 768, // Medium devices like tablets
-    laptop: 1024, // Larger devices like laptops
-    desktop: 1280, // Desktops and large screens
-    largeDesktop: 1440, // Large desktop screens
+    xs: 480,
+    sm: 768,
+    md: 992,
+    lg: 1200,
   },
 };
 

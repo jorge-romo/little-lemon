@@ -10,7 +10,7 @@ export const Container = styled.section`
     gap: 2rem;
     padding: 2rem;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -47,7 +47,7 @@ export const Content = styled.div`
     margin: 1rem 0;
   }
 
-  @media (max-width: 966px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     align-items: center;
     text-align: center;
   }
@@ -73,7 +73,7 @@ export const Image = styled.div`
     top: -8rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     margin-right: 8rem;
     margin-top: 6rem;
 

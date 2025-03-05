@@ -1,5 +1,5 @@
 import { FC, ComponentPropsWithRef, useState } from 'react';
-import Nav from '../Nav';
+import { Nav } from '../Nav';
 import { IconButton } from '../Button';
 import {
   DrawerBackdrop,

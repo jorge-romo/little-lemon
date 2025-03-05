@@ -1,1 +1,2 @@
-export { default } from './SpecialFoodCard';
+export { default as SpecialFoodCard } from './SpecialFoodCard';
+export * from './types';

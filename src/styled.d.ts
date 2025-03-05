@@ -2,10 +2,20 @@
 import 'styled-components';
 
 declare module 'styled-components' {
+  export type ResponsiveDesign<T> = {
+    xs: T;
+    sm?: T;
+    md?: T;
+    lg?: T;
+    xl?: T;
+  };
+
   export interface DefaultTheme {
     colors: {
       black: string;
       white: string;
+      light_grey: string;
+      dark_grey: string;
       primary: string;
       secondary: string;
       disabled: string;
@@ -29,6 +39,9 @@ declare module 'styled-components' {
       focused_outline: string;
       primary_component: string;
       secondary_component: string;
+      tertiary_component: string;
+      light_grey_component: string;
+      dark_grey_component: string;
       disabled_component: string;
       focused_component: string;
     };
@@ -68,11 +81,10 @@ declare module 'styled-components' {
       };
     };
     breakpoints: {
-      mobile: number; // Small devices like phones
-      tablet: number; // Medium devices like tablets
-      laptop: number; // Larger devices like laptops
-      desktop: number; // Desktops and large screens
-      largeDesktop: number; // Large desktop screens
+      xs: number;
+      sm: number;
+      md: number;
+      lg: number;
     };
     maxwidth: number;
   }

@@ -1,6 +1,6 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { Container, Title, Items } from './styles';
-import TestimonialCard from '../TestimonialCard';
+import { TestimonialCard } from '../TestimonialCard';
 
 const TestimonialsSection: FC<ComponentPropsWithRef<'div'>> = (props) => {
   return (

@@ -23,22 +23,22 @@ export const Items = styled.div`
   position: relative;
   display: grid;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop + 1 + 'px'}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg + 1 + 'px'}) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 4rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg + 'px'}) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 2rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md + 'px'}) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 4rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     grid-template-columns: 1fr;
     grid-gap: 2rem;
   }

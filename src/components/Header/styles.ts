@@ -21,7 +21,7 @@ export const Content = styled.div`
   align-items: center;
   padding: 1rem 2rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     padding: 1rem;
   }
 `;

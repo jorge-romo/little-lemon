@@ -1,13 +1,31 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react';
-import type { WebTarget } from 'styled-components';
+import type { WebTarget, ResponsiveDesign } from 'styled-components';
 import type { KnownTarget } from 'styled-components/dist/types';
 
-export type ExtendedButtonProps<AsTarget extends WebTarget> = {
+export type ExtendedButtonStyledProps<AsTarget extends WebTarget> = Omit<
+  ButtonStyledProps<AsTarget>,
+  'rounded' | 'size'
+> & {
+  size?:
+    | ButtonStyledProps<AsTarget>['rounded']
+    | ResponsiveDesign<ButtonStyledProps<AsTarget>['rounded']>; // default 'md'
+  rounded?:
+    | ButtonStyledProps<AsTarget>['rounded']
+    | ResponsiveDesign<ButtonStyledProps<AsTarget>['rounded']>; // default 'md'
+};
+
+export type ButtonStyledProps<AsTarget extends WebTarget> = {
   as?: AsTarget; // default button
   variant?: 'primary' | 'secondary' | 'outlined'; // default 'primary'
-  color?: 'primary' | 'secondary' | 'default'; // default 'default'
-  size?: 'md' | 'lg'; // default 'md'
-  rounded?: boolean | 'sm' | 'md' | 'lg' | 'circle'; // default 'md'
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'default'
+    | 'light_grey'
+    | 'dark_grey'; // default 'default'
+  size?: 'sm' | 'md' | 'lg'; // default 'md'
+  rounded?: boolean | 'sm' | 'md' | 'lg' | 'rounded' | 'circle'; // default 'md'
 };
 
 export type ButtonIconProps = {
@@ -15,15 +33,26 @@ export type ButtonIconProps = {
   endIcon?: ReactNode;
 };
 
-export type ButtonBaseProps<
+type BaseProps<
+  ExtendedProps extends Record<string, any>,
   AsTarget extends WebTarget,
   AsTargetProps extends object = AsTarget extends KnownTarget
     ? ComponentPropsWithRef<AsTarget>
     : {},
-> = ExtendedButtonProps<AsTarget> & AsTargetProps;
+> = ExtendedProps & AsTargetProps;
 
-export type ButtonProps<AsTarget extends WebTarget> =
-  ButtonBaseProps<AsTarget> & ButtonIconProps;
+export type ButtonBaseProps<AsTarget extends WebTarget> = BaseProps<
+  ButtonStyledProps<AsTarget>,
+  AsTarget
+>;
 
-export type IconButtonProps<AsTarget extends WebTarget> =
-  ButtonBaseProps<AsTarget>;
+export type ButtonProps<AsTarget extends WebTarget> = BaseProps<
+  ExtendedButtonStyledProps<AsTarget>,
+  AsTarget
+> &
+  ButtonIconProps;
+
+export type IconButtonProps<AsTarget extends WebTarget> = BaseProps<
+  ExtendedButtonStyledProps<AsTarget>,
+  AsTarget
+>;

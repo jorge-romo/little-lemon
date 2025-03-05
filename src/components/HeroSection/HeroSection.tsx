@@ -15,7 +15,11 @@ const HeroSection: FC<ComponentPropsWithRef<'div'>> = (props) => {
             We are family owned Mediterranean restaurant, focused on traditional
             recipes served with a modern twist.
           </p>
-          <Button as={Link} to='/bookings'>
+          <Button
+            as={Link}
+            to='/bookings'
+            rounded={{ xs: 'rounded', md: 'md' }}
+          >
             Reserve a Table
           </Button>
         </Content>

@@ -8,18 +8,18 @@ export const Container = styled.section`
     display: flex;
     justify-content: space-between;
     padding: 2rem;
-    margin-bottom: 10rem;
+    margin-bottom: 6rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md + 'px'}) {
     .section-inner {
-      margin-bottom: 8rem;
+      margin-bottom: 4rem;
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     .section-inner {
-      margin-bottom: 2rem;
+      margin-bottom: 0rem;
     }
   }
 `;
@@ -51,6 +51,20 @@ export const Content = styled.div`
     margin: 1rem 0;
     max-width: 20rem;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs + 'px'}) {
+    .name {
+      font-size: ${({ theme }) => theme.font.size['5xl']};
+    }
+
+    .location {
+      font-size: ${({ theme }) => theme.font.size['3xl']};
+    }
+
+    .description {
+      font-size: ${({ theme }) => theme.font.size['md']};
+    }
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -61,19 +75,19 @@ export const ImageContainer = styled.div`
   img {
     display: block;
     object-fit: cover;
-    width: 24rem;
-    height: 28rem;
+    width: 21rem;
+    height: 24rem;
     border-radius: ${({ theme }) => theme.border.radius.large};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md + 'px'}) {
     img {
-      width: 20rem;
-      height: 24rem;
+      width: 18rem;
+      height: 20.5rem;
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     img {
       display: none;
     }

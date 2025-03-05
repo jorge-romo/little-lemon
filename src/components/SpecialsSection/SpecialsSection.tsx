@@ -1,19 +1,37 @@
 import type { FC, ComponentPropsWithRef } from 'react';
 import { Link } from 'react-router';
 import { Button } from '../Button';
-import SpecialFoodCard from '../SpecialFoodCard';
-import { Container, Head, Item, Items, ItemsContainer } from './styles';
+import { SpecialFoodCard } from '../SpecialFoodCard';
+import {
+  Container,
+  Head,
+  Item,
+  Items,
+  ItemsContainer,
+  TagGroup,
+} from './styles';
 import bruschetta from '../../assets/bruschetta.svg';
 import greekSalad from '../../assets/greek-salad.jpg';
 import lemonDessert from '../../assets/lemon-dessert.jpg';
+
+const tags = ['Lunch', 'Mains', 'Desserts', 'A La Carte', 'Specials'];
 
 const SpecialsSection: FC<ComponentPropsWithRef<'div'>> = (props) => {
   return (
     <Container {...props}>
       <div className='section-inner'>
         <Head>
-          <h2>This weeks specials!</h2>
-          <Button as={Link} to='/menu' size='lg'>
+          <div className='head-content'>
+            <h2>This weeks specials!</h2>
+            <TagGroup className='touchscreen-only'>
+              {tags.map((tag, index) => (
+                <Button key={index} variant='primary' color='light_grey'>
+                  {tag}
+                </Button>
+              ))}
+            </TagGroup>
+          </div>
+          <Button as={Link} to='/menu' size='lg' className='desktop-only'>
             Online Menu
           </Button>
         </Head>

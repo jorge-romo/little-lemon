@@ -21,14 +21,14 @@ h1 {
   font-family: ${({ theme }) => theme.font.family.heading};
   font-size: ${({ theme }) => theme.font.size['8xl']};
   font-weight: ${({ theme }) => theme.font.weight.medium};
-  line-height: 1.5;
+  line-height: 1;
 };
 
 h2 {
   font-family: ${({ theme }) => theme.font.family.heading};
   font-size: ${({ theme }) => theme.font.size['7xl']};
   font-weight: ${({ theme }) => theme.font.weight.normal};
-  line-height: 1.5;
+  line-height: 1;
 };
 
 h3 {
@@ -77,13 +77,13 @@ a:disabled {
 }
 
 .desktop-only {
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     display: none !important;
   }
 }
 
 .touchscreen-only {
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet + 1 + 'px'}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm + 1 + 'px'}) {
     display: none !important;
   }
 }

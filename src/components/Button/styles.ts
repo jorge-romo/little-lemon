@@ -1,35 +1,49 @@
 import { Link, NavLink } from 'react-router';
 import styled, { css, WebTarget } from 'styled-components';
-import type { ButtonProps, ExtendedButtonProps } from './types';
+import type { ButtonBaseProps, ButtonProps, ButtonStyledProps } from './types';
 
-const buttonBaseStyles = css<ExtendedButtonProps<WebTarget>>`
+const buttonBaseStyles = css<ButtonStyledProps<WebTarget>>`
   appearance: none;
   border-style: ${({ variant }) => (variant === 'outlined' ? 'solid' : 'none')};
   border-width: ${({ variant }) => (variant === 'outlined' ? '2px' : 'unset')};
   background-color: ${({ theme, variant, color }) =>
     variant === 'outlined' || variant === 'secondary'
       ? 'transparent'
-      : color === 'secondary'
-        ? theme.colors.secondary_component
-        : theme.colors.primary_component};
+      : color === 'light_grey'
+        ? theme.colors.light_grey_component
+        : color === 'dark_grey'
+          ? theme.colors.dark_grey_component
+          : color === 'secondary'
+            ? theme.colors.secondary_component
+            : color === 'tertiary'
+              ? theme.colors.tertiary_component
+              : theme.colors.primary_component};
   color: ${({ theme, variant, color }) =>
     variant === 'outlined' || variant === 'secondary'
-      ? color === 'primary'
-        ? theme.colors.primary_component
-        : color === 'secondary'
-          ? theme.colors.secondary_component
-          : theme.colors.primary_text
-      : theme.colors.primary_text};
+      ? color === 'light_grey'
+        ? theme.colors.light_grey_component
+        : color === 'dark_grey'
+          ? theme.colors.dark_grey_component
+          : color === 'primary'
+            ? theme.colors.primary_component
+            : color === 'secondary'
+              ? theme.colors.secondary_component
+              : theme.colors.primary_text
+      : color === 'dark_grey' || color === 'secondary' || color === 'tertiary'
+        ? theme.colors.tertiary_text
+        : theme.colors.primary_text};
   border-radius: ${({ rounded, theme }) =>
     rounded === false
       ? 'none'
       : rounded === 'circle'
         ? '50%'
-        : rounded === 'lg'
-          ? theme.border.radius.large
-          : rounded === 'sm'
-            ? theme.border.radius.small
-            : theme.border.radius.medium};
+        : rounded === 'rounded'
+          ? '999999px'
+          : rounded === 'lg'
+            ? theme.border.radius.large
+            : rounded === 'sm'
+              ? theme.border.radius.small
+              : theme.border.radius.medium};
   transition: box-shadow 0.1s ease-in-out;
   text-align: center;
   padding: ${({ size }) => (size === 'lg' ? '1rem 2rem' : '0.5rem 1rem')};
@@ -117,7 +131,7 @@ export const ButtonContainer = styled<WebTarget, ButtonProps<WebTarget>>(
 
 export const NavLinkButtonContainer = styled<
   typeof Link,
-  ButtonProps<typeof NavLink>
+  ButtonBaseProps<typeof NavLink>
 >(NavLink).withConfig({
   shouldForwardProp,
 })`
@@ -126,7 +140,7 @@ export const NavLinkButtonContainer = styled<
 
 export const LinkButtonContainer = styled<
   typeof Link,
-  ButtonProps<typeof Link>
+  ButtonBaseProps<typeof Link>
 >(Link).withConfig({
   shouldForwardProp,
 })`

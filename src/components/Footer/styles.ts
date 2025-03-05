@@ -24,7 +24,7 @@ export const Content = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     flex-direction: column;
   }
 `;
@@ -36,7 +36,7 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 0.5rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     display: none;
   }
 `;
