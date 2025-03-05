@@ -2,14 +2,14 @@ import { FC, ComponentPropsWithRef, useState } from 'react';
 import { Nav } from '../Nav';
 import { IconButton } from '../Button';
 import {
-  DrawerBackdrop,
-  DrawerBody,
-  DrawerCloseTrigger,
-  DrawerContent,
-  DrawerHeader,
-  DrawerRoot,
-  DrawerTrigger,
-} from '../ui/drawer';
+  ChakraDrawerBackdrop,
+  ChakraDrawerBody,
+  ChakraDrawerCloseTrigger,
+  ChakraDrawerContent,
+  ChakraDrawerHeader,
+  ChakraDrawerRoot,
+  ChakraDrawerTrigger,
+} from '../ui';
 import { LogoContainer } from './styles';
 import MenuIcon from '../../assets/hamburger-menu-icon.svg?react';
 import CloseIcon from '../../assets/close-icon.svg?react';
@@ -20,21 +20,21 @@ const MobileNav: FC<ComponentPropsWithRef<'div'>> = (props) => {
 
   return (
     <div {...props}>
-      <DrawerRoot
+      <ChakraDrawerRoot
         open={open}
         onOpenChange={(e) => setOpen(e.open)}
         size='full'
         placement='start'
       >
-        <DrawerBackdrop />
-        <DrawerTrigger asChild>
+        <ChakraDrawerBackdrop />
+        <ChakraDrawerTrigger asChild>
           <IconButton variant='secondary' size='lg' aria-label='Open menu'>
             <MenuIcon />
           </IconButton>
-        </DrawerTrigger>
-        <DrawerContent background='white' padding={4}>
-          <DrawerHeader display='flex' justifyContent='flex-start'>
-            <DrawerCloseTrigger asChild>
+        </ChakraDrawerTrigger>
+        <ChakraDrawerContent background='white' padding={4}>
+          <ChakraDrawerHeader display='flex' justifyContent='flex-start'>
+            <ChakraDrawerCloseTrigger asChild>
               <IconButton
                 className='close-button'
                 variant='secondary'
@@ -43,9 +43,9 @@ const MobileNav: FC<ComponentPropsWithRef<'div'>> = (props) => {
               >
                 <CloseIcon />
               </IconButton>
-            </DrawerCloseTrigger>
-          </DrawerHeader>
-          <DrawerBody
+            </ChakraDrawerCloseTrigger>
+          </ChakraDrawerHeader>
+          <ChakraDrawerBody
             paddingY={8}
             display='flex'
             flexDirection='column'
@@ -55,9 +55,9 @@ const MobileNav: FC<ComponentPropsWithRef<'div'>> = (props) => {
               <img src={logoImg} alt='Little Lemon' />
             </LogoContainer>
             <Nav type='mobile' onClickLink={() => setOpen(false)} />
-          </DrawerBody>
-        </DrawerContent>
-      </DrawerRoot>
+          </ChakraDrawerBody>
+        </ChakraDrawerContent>
+      </ChakraDrawerRoot>
     </div>
   );
 };

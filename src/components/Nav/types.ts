@@ -3,10 +3,10 @@ import type {
   MouseEvent as ReactMouseEvent,
 } from 'react';
 
-export type NavProps = {
+export interface NavProps extends ComponentPropsWithRef<'div'> {
   type?: 'mobile' | 'desktop';
   onClickLink?: (
     e: ReactMouseEvent<HTMLAnchorElement, MouseEvent>,
     to: string
   ) => void;
-} & ComponentPropsWithRef<'div'>;
+}

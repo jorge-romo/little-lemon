@@ -3,7 +3,7 @@ import { Container, Content, Image } from './styles';
 import showCase1 from '../../assets/restaurant-show-1.jpg';
 import showCase2 from '../../assets/restaurant-show-2.jpg';
 
-const Chicago: FC<ComponentPropsWithRef<'section'>> = (props) => {
+const AboutSection: FC<ComponentPropsWithRef<'section'>> = (props) => {
   return (
     <Container {...props}>
       <div className='section-inner'>
@@ -30,4 +30,4 @@ const Chicago: FC<ComponentPropsWithRef<'section'>> = (props) => {
   );
 };
 
-export default Chicago;
+export default AboutSection;

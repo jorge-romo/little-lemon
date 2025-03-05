@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, FC, ComponentPropsWithRef } from 'react';
 import { Link } from 'react-router';
-import Nav from '../Nav';
-import MobileNav from '../MobileNav';
+import { Nav } from '../Nav';
+import { MobileNav } from '../MobileNav';
 import { Container, Content, LogoImg } from './styles';
 import logoImg from '../../assets/logo.png';
 
