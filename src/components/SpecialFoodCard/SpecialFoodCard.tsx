@@ -18,7 +18,7 @@ const SpecialFoodCard: FC<SpecialFoodCardProps> = ({
       <Content>
         <Header>
           <span className='title'>{title}</span>
-          <span className='price desktop-only'>{'$ ' + price}</span>
+          <span className='price button-text desktop-only'>{'$ ' + price}</span>
         </Header>
         <Body>
           <Text className='desktop-only' lineClamp={5}>
@@ -29,14 +29,15 @@ const SpecialFoodCard: FC<SpecialFoodCardProps> = ({
           </Text>
         </Body>
         <Footer>
-          <p className='price touchscreen-only'>{'$ ' + price}</p>
+          <p className='price button-text touchscreen-only'>{'$ ' + price}</p>
           <Button
             variant='primary'
             color='tertiary'
             endIcon={<DeliveryIcon />}
             size={{ xs: 'sm', lg: 'md' }}
           >
-            Order a delivery
+            <span className='desktop-only'>Order a delivery</span>
+            <span className='touchscreen-only'>Order</span>
           </Button>
         </Footer>
       </Content>

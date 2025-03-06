@@ -7,9 +7,6 @@ export const Container = styled.nav`
   gap: 1rem;
 
   a {
-    font-size: ${({ theme }) => theme.font.size.xl};
-    font-weight: ${({ theme }) => theme.font.weight.bold};
-    line-height: 1.5;
     padding: 0 0.5rem;
   }
 

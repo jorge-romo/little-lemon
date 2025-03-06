@@ -4,15 +4,12 @@ import color from 'color';
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
+  color: ${({ theme }) => theme.colors.tertiary_text};
 
-  h2 {
-    font-family: ${({ theme }) => theme.font.family.heading};
-    font-size: ${({ theme }) => theme.font.size['4xl']};
-    font-weight: ${({ theme }) => theme.font.weight.bold};
-    line-height: 1;
-    color: ${({ theme }) => theme.colors.tertiary_text};
+  .head-text {
     padding: 2rem;
     text-align: center;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   }
 
   .form-wrapper {
@@ -21,11 +18,10 @@ export const FormContainer = styled.div`
     border-radius: ${({ theme }) => theme.border.radius.large};
     padding: 1rem;
     margin: 0 auto 2rem;
-    color: ${({ theme }) => theme.colors.tertiary_text};
     width: calc(100% - 4rem);
     max-width: 27rem;
     min-width: 15rem;
-    height: 30rem;
+    min-height: 30rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {

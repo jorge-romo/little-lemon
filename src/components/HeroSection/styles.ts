@@ -9,17 +9,17 @@ export const Container = styled.section`
     justify-content: space-between;
     padding: 2rem;
     margin-bottom: 6rem;
-  }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md + 'px'}) {
-    .section-inner {
+    @media (max-width: ${({ theme }) => theme.breakpoints.md + 'px'}) {
       margin-bottom: 4rem;
     }
-  }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
-    .section-inner {
+    @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
       margin-bottom: 0rem;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.xs + 'px'}) {
+      padding: 1rem;
     }
   }
 `;
@@ -31,39 +31,15 @@ export const Content = styled.div`
   align-items: flex-start;
 
   .name {
-    font-family: ${({ theme }) => theme.font.family.heading};
-    font-size: ${({ theme }) => theme.font.size['7xl']};
-    font-weight: ${({ theme }) => theme.font.weight.normal};
-    line-height: 0.8;
     color: ${({ theme }) => theme.colors.highlight_tertiary_text};
   }
 
   .location {
-    font-family: ${({ theme }) => theme.font.family.heading};
-    font-size: ${({ theme }) => theme.font.size['5xl']};
-    font-weight: ${({ theme }) => theme.font.weight.normal};
-    line-height: 0.8;
   }
 
   .description {
-    font-size: ${({ theme }) => theme.font.size['lg']};
-    font-weight: ${({ theme }) => theme.font.weight.normal};
     margin: 1rem 0;
     max-width: 20rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.xs + 'px'}) {
-    .name {
-      font-size: ${({ theme }) => theme.font.size['5xl']};
-    }
-
-    .location {
-      font-size: ${({ theme }) => theme.font.size['3xl']};
-    }
-
-    .description {
-      font-size: ${({ theme }) => theme.font.size['md']};
-    }
   }
 `;
 

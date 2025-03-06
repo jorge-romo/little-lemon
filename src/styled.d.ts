@@ -55,16 +55,16 @@ declare module 'styled-components' {
     font: {
       family: {
         primary: string;
-        heading: string;
+        secondary: string;
       };
       weight: {
+        semi_light: number;
         normal: number;
         medium: number;
         bold: number;
         extrabold: number;
       };
       size: {
-        '2xs': string;
         xs: string;
         sm: string;
         md: string;
@@ -74,10 +74,6 @@ declare module 'styled-components' {
         '3xl': string;
         '4xl': string;
         '5xl': string;
-        '6xl': string;
-        '7xl': string;
-        '8xl': string;
-        '9xl': string;
       };
     };
     breakpoints: {

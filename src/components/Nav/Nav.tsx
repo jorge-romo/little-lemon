@@ -22,36 +22,42 @@ const Nav: FC<NavProps> = ({
     <Container className={clsx(className, type)} {...rest}>
       <Link
         to='/'
+        className='button-text'
         onClick={onClickLink ? generateHandleLinkClick('/') : undefined}
       >
         Home
       </Link>
       <Link
         to='/#about'
+        className='button-text'
         onClick={onClickLink ? generateHandleLinkClick('/#about') : undefined}
       >
         About
       </Link>
       <Link
         to='/#menu'
+        className='button-text'
         onClick={onClickLink ? generateHandleLinkClick('/#menu') : undefined}
       >
         Menu
       </Link>
       <Link
         to='/bookings'
+        className='button-text'
         onClick={onClickLink ? generateHandleLinkClick('/bookings') : undefined}
       >
         Reservations
       </Link>
       <Link
         to='/order'
+        className='button-text'
         onClick={onClickLink ? generateHandleLinkClick('/order') : undefined}
       >
         Order Online
       </Link>
       <Link
         to='/login'
+        className='button-text'
         onClick={onClickLink ? generateHandleLinkClick('/login') : undefined}
       >
         Log In

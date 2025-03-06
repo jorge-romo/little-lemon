@@ -5,10 +5,14 @@ export const Container = styled.section`
 
   .section-inner {
     padding: 2rem 2rem 4rem;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.xs + 'px'}) {
+      padding: 1rem 1rem 4rem;
+    }
   }
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 4rem;

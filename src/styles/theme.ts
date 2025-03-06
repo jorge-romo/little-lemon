@@ -49,16 +49,16 @@ const theme: DefaultTheme = {
   font: {
     family: {
       primary: "'Karla', sans-serif",
-      heading: "'Markazi Text', serif",
+      secondary: "'Markazi Text', serif",
     },
     weight: {
+      semi_light: 300,
       normal: 400,
       medium: 500,
       bold: 700,
       extrabold: 800,
     },
     size: {
-      '2xs': '0.625rem',
       xs: '0.75rem',
       sm: '0.875rem',
       md: '1rem',
@@ -66,12 +66,8 @@ const theme: DefaultTheme = {
       xl: '1.25rem',
       '2xl': '1.5rem',
       '3xl': '1.875rem',
-      '4xl': '2.25rem',
-      '5xl': '3rem',
-      '6xl': '3.75rem',
-      '7xl': '4.5rem',
-      '8xl': '6rem',
-      '9xl': '8rem',
+      '4xl': '2.5rem',
+      '5xl': '4rem',
     },
   },
   maxwidth: 1440,

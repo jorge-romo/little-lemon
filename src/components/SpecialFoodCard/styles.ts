@@ -10,11 +10,7 @@ export const Container = styled.div`
 
   .price {
     display: inline-block;
-    font-family: ${({ theme }) => theme.font.family.primary};
-    font-size: ${({ theme }) => theme.font.size.md};
     color: ${({ theme }) => theme.colors.highlight_primary_text};
-    font-weight: ${({ theme }) => theme.font.weight.bold};
-    line-height: 1.5;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg + 'px'}) {
@@ -49,13 +45,17 @@ export const Image = styled.img`
     margin-right: 2rem;
     border-radius: ${({ theme }) => theme.border.radius.medium};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs + 'px'}) {
+    margin-right: 1rem;
+  }
 `;
 
 export const Content = styled.div`
   padding: 1rem;
 `;
 
-export const Header = styled.h6`
+export const Header = styled.h4`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,11 +68,7 @@ export const Header = styled.h6`
 
   .title {
     display: inline-block;
-    font-family: ${({ theme }) => theme.font.family.heading};
-    font-size: ${({ theme }) => theme.font.size['2xl']};
-    color: ${({ theme }) => theme.colors.primary_text};
     font-weight: ${({ theme }) => theme.font.weight.bold};
-    line-height: 1.5;
   }
 `;
 

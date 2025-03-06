@@ -15,7 +15,13 @@ import { Button } from '../Button';
 import { capitalize } from '../../utils/string';
 import { phoneMask } from '../../utils/type';
 import { BookingFormData, BookingFormProps, bookingSchema } from './types';
-import { Content, Footer, Form, inputStyle } from './styles';
+import { Footer, Form, inputStyle } from './styles';
+import { StepContent } from './StepContent';
+
+const fields: (keyof BookingFormData)[][] = [
+  ['date', 'time', 'guests', 'occasion', 'specialRequest'],
+  ['firstName', 'lastName', 'phone', 'email'],
+];
 
 const BookingForm: FC<BookingFormProps> = ({
   data,
@@ -92,10 +98,10 @@ const BookingForm: FC<BookingFormProps> = ({
   };
 
   const nextStep: MouseEventHandler<HTMLButtonElement> = () => {
-    trigger(['date', 'time', 'guests', 'occasion']).then((isValid) => {
-      if (isValid) {
-        setStep(1);
-      }
+    trigger(fields[step]).then((isValid) => {
+      if (!isValid) return;
+
+      setStep(1);
     });
   };
 
@@ -110,14 +116,15 @@ const BookingForm: FC<BookingFormProps> = ({
       noValidate
       style={{ ...style, '--field-label-width': '8.25rem' } as any}
     >
-      <Content>
+      <StepContent fields={fields} currentStepIndex={step}>
+        {/* Step 1 fields */}
         <ChakraFormField
           orientation='horizontal'
           label='Date'
           required
           invalid={!!errors.date}
           errorText={errors.date?.message}
-          style={{ display: step !== 0 ? 'none' : undefined }}
+          data-name='date'
           render={({ inputStyle: formInputStyle }) => (
             <ChakraInputGroup flex='1' endElement={<FaCalendar />}>
               <Input
@@ -137,7 +144,7 @@ const BookingForm: FC<BookingFormProps> = ({
           invalid={!!errors.time}
           errorText={errors.time?.message}
           disabled={!selectedDate}
-          style={{ display: step !== 0 ? 'none' : undefined }}
+          data-name='time'
           render={({ inputStyle: formInputStyle }) => (
             <Controller
               name='time'
@@ -161,7 +168,7 @@ const BookingForm: FC<BookingFormProps> = ({
           required
           invalid={!!errors.guests}
           errorText={errors.guests?.message}
-          style={{ display: step !== 0 ? 'none' : undefined }}
+          data-name='guests'
           render={({ inputStyle: formInputStyle }) => (
             <Controller
               name='guests'
@@ -188,7 +195,7 @@ const BookingForm: FC<BookingFormProps> = ({
           label='Occasion'
           invalid={!!errors.occasion}
           errorText={errors.occasion?.message}
-          style={{ display: step !== 0 ? 'none' : undefined }}
+          data-name='occasion'
           render={({ inputStyle: formInputStyle }) => (
             <Controller
               name='occasion'
@@ -206,11 +213,23 @@ const BookingForm: FC<BookingFormProps> = ({
             />
           )}
         />
-        <Group
-          grow
-          alignItems='flex-start'
-          style={{ display: step !== 1 ? 'none' : undefined }}
-        >
+        <ChakraFormField
+          orientation='vertical'
+          label='Special Request'
+          invalid={!!errors.specialRequest}
+          errorText={errors.specialRequest?.message}
+          data-name='specialRequest'
+          render={({ inputStyle: formInputStyle }) => (
+            <Textarea
+              {...register('specialRequest')}
+              rows={3}
+              css={{ ...inputStyle, ...formInputStyle }}
+            />
+          )}
+        />
+        {/* Step 2 fields */}
+        <h5 data-step-index='1'>Contact Information</h5>
+        <Group grow alignItems='flex-start' data-name='firstName|lastName'>
           <ChakraFormField
             orientation='vertical'
             label='First Name'
@@ -242,7 +261,7 @@ const BookingForm: FC<BookingFormProps> = ({
           label='Phone Number'
           invalid={!!errors.phone}
           errorText={errors.phone?.message}
-          style={{ display: step !== 1 ? 'none' : undefined }}
+          data-name='phone'
           render={({ inputStyle: formInputStyle }) => (
             <Input
               {...registerWithMask('phone', phoneMask)}
@@ -253,9 +272,10 @@ const BookingForm: FC<BookingFormProps> = ({
         <ChakraFormField
           orientation='horizontal'
           label='Email'
+          required
           invalid={!!errors.email}
           errorText={errors.email?.message}
-          style={{ display: step !== 1 ? 'none' : undefined }}
+          data-name='email'
           render={({ inputStyle: formInputStyle }) => (
             <Input
               {...register('email')}
@@ -263,21 +283,7 @@ const BookingForm: FC<BookingFormProps> = ({
             />
           )}
         />
-        <ChakraFormField
-          orientation='horizontal'
-          label='Special Request'
-          invalid={!!errors.specialRequest}
-          errorText={errors.specialRequest?.message}
-          style={{ display: step !== 1 ? 'none' : undefined }}
-          render={({ inputStyle: formInputStyle }) => (
-            <Textarea
-              {...register('specialRequest')}
-              rows={3}
-              css={{ ...inputStyle, ...formInputStyle }}
-            />
-          )}
-        />
-      </Content>
+      </StepContent>
       <Footer>
         <Button type='button' onClick={prevStep} disabled={step !== 1}>
           Back

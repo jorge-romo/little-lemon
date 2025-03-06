@@ -22,7 +22,14 @@ const SpecialsSection: FC<ComponentPropsWithRef<'div'>> = (props) => {
       <div className='section-inner'>
         <Head>
           <div className='head-content'>
-            <h2>This weeks specials!</h2>
+            <h1>
+              <span className='desktop-only heading-1'>
+                This weeks specials!
+              </span>
+              <span className='touchscreen-only subtitle'>
+                Order For Delivery!
+              </span>
+            </h1>
             <TagGroup className='touchscreen-only'>
               {tags.map((tag, index) => (
                 <Button key={index} variant='primary' color='light_grey'>

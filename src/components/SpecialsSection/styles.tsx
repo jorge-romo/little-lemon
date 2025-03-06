@@ -5,6 +5,10 @@ export const Container = styled.section`
 
   .section-inner {
     padding: 2rem 2rem 4rem;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.xs + 'px'}) {
+      padding: 1rem 1rem 4rem;
+    }
   }
 `;
 
@@ -29,14 +33,6 @@ export const Head = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     margin-bottom: 1rem;
-
-    h2 {
-      font-family: ${({ theme }) => theme.font.family.heading};
-      font-size: ${({ theme }) => theme.font.size['xl']};
-      font-weight: ${({ theme }) => theme.font.weight.bold};
-      text-transform: uppercase;
-      line-height: 1.5;
-    }
   }
 `;
 

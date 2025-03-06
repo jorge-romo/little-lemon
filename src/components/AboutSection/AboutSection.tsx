@@ -8,9 +8,9 @@ const AboutSection: FC<ComponentPropsWithRef<'section'>> = (props) => {
     <Container {...props}>
       <div className='section-inner'>
         <Content>
-          <h2 className='name'>Little Lemon</h2>
-          <p className='location'>Chicago</p>
-          <p className='description'>
+          <h1 className='name'>Little Lemon</h1>
+          <h2 className='location heading-2'>Chicago</h2>
+          <p className='description body-2'>
             Little Lemon is owned by two Italian brothers, Mario and Adrian, who
             moved to the United States to pursue their shared dream of owning a
             restaurant.

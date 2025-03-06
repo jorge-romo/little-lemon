@@ -49,7 +49,12 @@ const Header: FC<ComponentPropsWithRef<'div'>> = (props) => {
         <Link to='/' className='touchscreen-only'>
           <LogoImg src={logoImg} alt='Little Lemon' />
         </Link>
-        <IconButton variant='secondary' size='lg' aria-label='Open menu'>
+        <IconButton
+          className='touchscreen-only'
+          variant='secondary'
+          size='lg'
+          aria-label='Open menu'
+        >
           <BasketIcon />
         </IconButton>
       </Content>

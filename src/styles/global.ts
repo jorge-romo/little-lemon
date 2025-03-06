@@ -15,46 +15,74 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-h1 {
-  font-family: ${({ theme }) => theme.font.family.heading};
-  font-size: ${({ theme }) => theme.font.size['8xl']};
+h1, .heading-1 {
+  font-family: ${({ theme }) => theme.font.family.secondary};
+  font-size: ${({ theme }) => theme.font.size['5xl']};
   font-weight: ${({ theme }) => theme.font.weight.medium};
   line-height: 1;
 };
 
-h2 {
-  font-family: ${({ theme }) => theme.font.family.heading};
-  font-size: ${({ theme }) => theme.font.size['7xl']};
+h2, .heading-2 {
+  font-family: ${({ theme }) => theme.font.family.secondary};
+  font-size: ${({ theme }) => theme.font.size['4xl']};
+  font-weight: ${({ theme }) => theme.font.weight.semi_light};
+  line-height: 1;
+};
+
+h3, .heading-3 {
+  font-family: ${({ theme }) => theme.font.family.secondary};
+  font-size: ${({ theme }) => theme.font.size['3xl']};
   font-weight: ${({ theme }) => theme.font.weight.normal};
   line-height: 1;
 };
 
-h3 {
-  font-family: ${({ theme }) => theme.font.family.heading};
-  font-size: ${({ theme }) => theme.font.size['6xl']};
-  font-weight: ${({ theme }) => theme.font.weight.bold};
-  text-transform: uppercase;
-  line-height: 1.5;
-};
-
-h4 {
-  font-family: ${({ theme }) => theme.font.family.heading};
-  font-size: ${({ theme }) => theme.font.size['5xl']};
-  font-weight: ${({ theme }) => theme.font.weight.extrabold};
-  line-height: 1.5;
-};
-
-h5 {
-  font-family: ${({ theme }) => theme.font.family.heading};
-  font-size: ${({ theme }) => theme.font.size['4xl']};
-  font-weight: ${({ theme }) => theme.font.weight.bold};
-  line-height: 1.5;
-};
-
-h6 {
-  font-family: ${({ theme }) => theme.font.family.heading};
+h4, .heading-4 {
+  font-family: ${({ theme }) => theme.font.family.secondary};
   font-size: ${({ theme }) => theme.font.size['2xl']};
+  font-weight: ${({ theme }) => theme.font.weight.normal};
+  line-height: 1;
+};
+
+h5, .heading-5 {
+  font-family: ${({ theme }) => theme.font.family.secondary};
+  font-size: ${({ theme }) => theme.font.size['xl']};
+  font-weight: ${({ theme }) => theme.font.weight.normal};
+  line-height: 1.25;
+};
+
+h6, .heading-6 {
+  font-family: ${({ theme }) => theme.font.family.secondary};
+  font-size: ${({ theme }) => theme.font.size['lg']};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
+  line-height: 1.25;
+};
+
+.subtitle {
+  font-family: ${({ theme }) => theme.font.family.primary};
+  font-size: ${({ theme }) => theme.font.size['xl']};
+  font-weight: ${({ theme }) => theme.font.weight.extrabold};
+  text-transform: uppercase;
+  line-height: 1.25;
+};
+
+.body-2 {
+  font-family: ${({ theme }) => theme.font.family.primary};
+  font-size: ${({ theme }) => theme.font.size['lg']};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
+  line-height: 1.5;
+};
+
+.button-text {
+  font-family: ${({ theme }) => theme.font.family.primary};
+  font-size: ${({ theme }) => theme.font.size['md']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
+  line-height: 1.5;
+};
+
+p {
+  font-family: ${({ theme }) => theme.font.family.primary};
+  font-size: ${({ theme }) => theme.font.size['md']};
+  font-weight: ${({ theme }) => theme.font.weight.normal};
   line-height: 1.5;
 };
 

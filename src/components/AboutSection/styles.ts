@@ -14,6 +14,7 @@ export const Container = styled.section`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 1rem;
     }
   }
 `;
@@ -27,23 +28,13 @@ export const Content = styled.div`
   flex: 1;
 
   .name {
-    font-family: ${({ theme }) => theme.font.family.heading};
-    font-size: ${({ theme }) => theme.font.size['7xl']};
-    font-weight: ${({ theme }) => theme.font.weight.normal};
-    line-height: 1;
     color: ${({ theme }) => theme.colors.highlight_secondary_text};
   }
 
   .location {
-    font-family: ${({ theme }) => theme.font.family.heading};
-    font-size: ${({ theme }) => theme.font.size['5xl']};
-    font-weight: ${({ theme }) => theme.font.weight.normal};
-    line-height: 1;
   }
 
   .description {
-    font-size: ${({ theme }) => theme.font.size['lg']};
-    font-weight: ${({ theme }) => theme.font.weight.normal};
     margin: 1rem 0;
   }
 

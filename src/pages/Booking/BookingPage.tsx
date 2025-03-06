@@ -74,7 +74,7 @@ const BookingPage: FC = () => {
       <div className='section-inner'>
         {status === BookingStatus.INIT ? (
           <FormContainer>
-            <h2>Reserve a table</h2>
+            <h1 className='head-text heading-2'>Reserve a table</h1>
             <BookingForm
               className='form-wrapper'
               data={formData}
