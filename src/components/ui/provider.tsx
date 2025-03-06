@@ -1,5 +1,6 @@
 'use client';
 
+import type { PropsWithChildren } from 'react';
 import {
   ChakraProvider,
   defineConfig,
@@ -9,7 +10,6 @@ import {
 // import { generateTwColorPalette } from '../../utils/color-palette';
 // import { ColorModeProvider, type ColorModeProviderProps } from './color-mode';
 import theme from '../../styles/theme';
-import { PropsWithChildren } from 'react';
 
 // function getTokenSchema(color: string) {
 //   const palette = generateTwColorPalette(color);

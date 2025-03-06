@@ -1,18 +1,19 @@
 import '@testing-library/jest-dom';
-import type { ReactElement, ReactNode } from 'react';
-import { BrowserRouter } from 'react-router';
 import { render, RenderOptions } from '@testing-library/react';
 
+import type { ReactElement, ReactNode } from 'react';
+import { BrowserRouter } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/global';
+import { ChakraUiProvider } from '../components';
 
 const AllTheProviders = ({ children }: { children: ReactNode }) => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        {children}
+        <ChakraUiProvider>{children}</ChakraUiProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
