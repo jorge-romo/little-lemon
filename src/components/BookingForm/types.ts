@@ -19,7 +19,9 @@ export const getBookingSchema = ({
           message: 'Please choose a valid option',
           required_error: 'Time is required',
         })
-      : z.string().min(1, 'Time is required'),
+      : z
+          .string({ required_error: 'Time is required' })
+          .min(1, 'Time is required'),
     guests: z
       .number()
       .min(1, 'At least 1 guest required')

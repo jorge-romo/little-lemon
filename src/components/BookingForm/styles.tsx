@@ -29,4 +29,6 @@ export const Footer = styled.div`
 export const inputStyle = defineStyle({
   '--focus-ring-color': 'colors.outline.bg',
   '--chakra-colors-border': 'colors.outline.solid',
+  '--chakra-colors-fg-muted': 'colors.outline.solid',
+  '--chakra-colors-color-palette-focus-ring': 'colors.outline.bg',
 });

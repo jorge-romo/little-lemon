@@ -63,7 +63,6 @@ const BookingForm: FC<BookingFormProps> = ({
     },
     defaultValues: {
       guests: 1,
-      time: '00:30',
       ...(defaultFormData ?? undefined),
     },
   });
@@ -181,8 +180,14 @@ const BookingForm: FC<BookingFormProps> = ({
                 <ChakraSelect
                   name={field.name}
                   value={field.value}
-                  onValueChange={(value) => field.onChange(value)}
-                  onInteractOutside={() => field.onBlur()}
+                  onValueChange={(value) => {
+                    field.onChange(value);
+                    trigger('time');
+                  }}
+                  onInteractOutside={() => {
+                    field.onBlur();
+                    trigger('time');
+                  }}
                   options={selectValues.timeSlots}
                   data-testid='time-input'
                   css={{ ...inputStyle, ...formInputStyle }}
@@ -234,8 +239,14 @@ const BookingForm: FC<BookingFormProps> = ({
                 <ChakraSelect
                   name={field.name}
                   value={field.value ?? ''}
-                  onValueChange={(value) => field.onChange(value)}
-                  onInteractOutside={() => field.onBlur()}
+                  onValueChange={(value) => {
+                    field.onChange(value);
+                    trigger('occasion');
+                  }}
+                  onInteractOutside={() => {
+                    field.onBlur();
+                    trigger('occasion');
+                  }}
                   options={selectValues.occasions}
                   data-testid='occasion-input'
                   css={{ ...inputStyle, ...formInputStyle }}
@@ -271,6 +282,7 @@ const BookingForm: FC<BookingFormProps> = ({
             render={({ inputStyle: formInputStyle }) => (
               <Input
                 {...register('firstName')}
+                autoComplete='given-name'
                 data-testid='first-name-input'
                 css={{ ...inputStyle, ...formInputStyle }}
               />
@@ -284,6 +296,7 @@ const BookingForm: FC<BookingFormProps> = ({
             render={({ inputStyle: formInputStyle }) => (
               <Input
                 {...register('lastName')}
+                autoComplete='family-name'
                 data-testid='last-name-input'
                 css={{ ...inputStyle, ...formInputStyle }}
               />
@@ -299,6 +312,7 @@ const BookingForm: FC<BookingFormProps> = ({
           render={({ inputStyle: formInputStyle }) => (
             <Input
               {...registerWithMask('phone', phoneMask)}
+              autoComplete='tel'
               data-testid='phone-input'
               css={{ ...inputStyle, ...formInputStyle }}
             />
@@ -314,6 +328,7 @@ const BookingForm: FC<BookingFormProps> = ({
           render={({ inputStyle: formInputStyle }) => (
             <Input
               {...register('email')}
+              autoComplete='email'
               data-testid='email-input'
               css={{ ...inputStyle, ...formInputStyle }}
             />
