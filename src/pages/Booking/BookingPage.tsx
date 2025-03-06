@@ -85,7 +85,7 @@ const BookingPage: FC = () => {
           </FormContainer>
         ) : status === BookingStatus.SUBMITTED && formData ? (
           <FormContainer>
-            <h2>Review and Confirm</h2>
+            <h1 className='head-text heading-2'>Review and Confirm</h1>
             <BookingConfirmation
               className='form-wrapper'
               data={formData}
@@ -95,16 +95,28 @@ const BookingPage: FC = () => {
           </FormContainer>
         ) : status === BookingStatus.COMPLETED ? (
           <FormContainer>
-            <div>Your reservation has been confirmed!</div>
-            <div>We look forward to welcoming you.</div>
-            <div>
-              Feel free to review your reservation details in the profile
-              section.
+            <h1 className='head-text heading-2'>
+              Your reservation has been confirmed!
+            </h1>
+            <div className='form-wrapper text-content'>
+              <p className='heading-2'>We look forward to welcoming you.</p>
+              <p className='body-2'>
+                Feel free to review your reservation details in the profile
+                section.
+              </p>
             </div>
           </FormContainer>
         ) : (
           <FormContainer>
-            <div>Service unavailable!</div>
+            <h1 className='head-text heading-2'>Service Unavailable!</h1>
+            <div className='form-wrapper text-content'>
+              <p className='body-2'>
+                Sorry, we're experiencing technical difficulties. Our
+                reservation system is currently unavailable due to a website
+                error. Please try again later or contact the restaurant directly
+                to book your table. We apologize for the inconvenience!
+              </p>
+            </div>
           </FormContainer>
         )}
       </div>

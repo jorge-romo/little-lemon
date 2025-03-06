@@ -24,14 +24,14 @@ export const FormContainer = styled.div`
     min-height: 30rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
-    h2 {
-      padding: 1rem;
-    }
+  .form-wrapper.text-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 
-    .form-content {
-      width: calc(100% - 2rem);
-      margin-bottom: 1rem;
+    > p {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      text-align: center;
     }
   }
 `;

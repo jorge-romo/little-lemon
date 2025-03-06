@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { FaCheck, FaEdit } from 'react-icons/fa';
 import { Button } from '../Button';
 import { BookingConfirmationProps } from './types';
+import { Container, Content, Footer } from './styles';
 
 const BookingConfirmation: FC<BookingConfirmationProps> = ({
   data,
@@ -10,21 +11,23 @@ const BookingConfirmation: FC<BookingConfirmationProps> = ({
   ...rest
 }) => {
   return (
-    <div {...rest}>
-      <div style={{ whiteSpace: 'pre-line' }}>
+    <Container {...rest}>
+      <Content style={{ whiteSpace: 'pre-line' }}>
         {JSON.stringify(data, null, 2)}
-      </div>
-      <Button startIcon={<FaEdit />} onClick={onEditBooking}>
-        Edit
-      </Button>
-      <Button
-        color='tertiary'
-        startIcon={<FaCheck />}
-        onClick={onConfirmBooking}
-      >
-        Confirm
-      </Button>
-    </div>
+      </Content>
+      <Footer>
+        <Button startIcon={<FaEdit />} onClick={onEditBooking}>
+          Edit
+        </Button>
+        <Button
+          color='tertiary'
+          startIcon={<FaCheck />}
+          onClick={onConfirmBooking}
+        >
+          Confirm
+        </Button>
+      </Footer>
+    </Container>
   );
 };
 
