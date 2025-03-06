@@ -1,4 +1,4 @@
-import '@testing-library/dom';
+import '@testing-library/jest-dom';
 import type { ReactElement, ReactNode } from 'react';
 import { BrowserRouter } from 'react-router';
 import { render, RenderOptions } from '@testing-library/react';

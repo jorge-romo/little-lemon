@@ -1,38 +1,68 @@
-import { FC, Ref } from 'react';
-import { Field } from '@chakra-ui/react';
+import { FC, ReactNode, Ref } from 'react';
+import { defineStyle, Field, SystemStyleObject } from '@chakra-ui/react';
 
-export interface ChakraFormFieldProps extends Field.RootProps {
+export interface ChakraFormFieldProps
+  extends Omit<Field.RootProps, 'children' | 'label'> {
   label?: string;
   helperText?: string;
   errorText?: string;
-  optionalText?: boolean;
+  optionalText?: string;
   ref?: Ref<HTMLDivElement>;
+  render: (props: { inputStyle: SystemStyleObject }) => ReactNode;
 }
 
-const ChakraFormField: FC<ChakraFormFieldProps> = ({
+const horizontalFieldInputStyle = defineStyle({
+  flex: 1,
+  width: 'auto',
+  minWidth: '9rem',
+});
+
+export const ChakraFormField: FC<ChakraFormFieldProps> = ({
   label,
   helperText,
   errorText,
   optionalText,
-  invalid,
-  required,
-  children,
-  ref,
+  orientation,
+  gap,
+  render,
   ...rest
 }) => {
+  const helperTextWidth =
+    'calc(100% - var(--field-label-width, 80px) - var(--chakra-field-label-gap))';
+
   return (
-    <Field.Root {...rest} ref={ref} invalid={invalid} required={required}>
+    <Field.Root
+      {...rest}
+      orientation={orientation}
+      gap={gap}
+      flexWrap={orientation === 'horizontal' ? 'wrap' : undefined}
+      css={{ '--chakra-field-label-gap': `spacing.${gap ?? 1.5}` }}
+    >
       {label && (
         <Field.Label>
           {label}
           <Field.RequiredIndicator fallback={optionalText} />
         </Field.Label>
       )}
-      {children}
-      {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
-      {errorText && <Field.ErrorText>{errorText}</Field.ErrorText>}
+      {render({
+        inputStyle:
+          orientation === 'horizontal' ? horizontalFieldInputStyle : {},
+      })}
+      {errorText ? (
+        <Field.ErrorText
+          marginLeft={orientation === 'horizontal' ? 'auto' : undefined}
+          minWidth={orientation === 'horizontal' ? helperTextWidth : undefined}
+        >
+          {errorText}
+        </Field.ErrorText>
+      ) : (
+        <Field.HelperText
+          marginLeft={orientation === 'horizontal' ? 'auto' : undefined}
+          minWidth={orientation === 'horizontal' ? helperTextWidth : undefined}
+        >
+          {helperText}
+        </Field.HelperText>
+      )}
     </Field.Root>
   );
 };
-
-export default ChakraFormField;

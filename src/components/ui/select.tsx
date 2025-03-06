@@ -1,15 +1,31 @@
-import { FC, useMemo } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { Select, createListCollection, Portal } from '@chakra-ui/react';
 import { FaChevronDown } from 'react-icons/fa';
 
-export type ChakraSelectProps = Select.RootProps & {
-  options: {
-    label: string;
-    value: string | number | symbol | bigint | boolean | null | undefined;
-  }[];
+export type ChakraSelectOption = {
+  label: string;
+  value: string;
 };
 
-const ChakraSelect: FC<ChakraSelectProps> = ({
+export type ChakraSelectProps<T extends unknown = any> = Omit<
+  Select.RootProps<T>,
+  'collection' | 'focusRing' | 'onValueChange' | 'value' | 'multiple'
+> & {
+  options: ChakraSelectOption[];
+} & (
+    | {
+        multiple: true;
+        value: string[];
+        onValueChange: (value: string[], item: T[]) => void;
+      }
+    | {
+        multiple?: false | undefined;
+        value: string;
+        onValueChange: (value: string, item: T) => void;
+      }
+  );
+
+export const ChakraSelect: FC<ChakraSelectProps> = ({
   options,
   multiple,
   positioning,
@@ -22,28 +38,28 @@ const ChakraSelect: FC<ChakraSelectProps> = ({
     [options]
   );
 
-  // const handleValueChange = useCallback<
-  //   Exclude<ChakraSelect.RootProps['onValueChange'], undefined>
-  // >(
-  //   (e) => {
-  //     if (!onValueChange) return;
+  const handleValueChange = useCallback<
+    Exclude<Select.RootProps['onValueChange'], undefined>
+  >(
+    (e) => {
+      if (!onValueChange) return;
 
-  //     if (multiple) {
-  //       onValueChange(e.value);
-  //     } else {
-  //       onValueChange(e.value[0]);
-  //     }
-  //   },
-  //   [multiple, onValueChange]
-  // );
+      if (multiple) {
+        onValueChange(e.value, e.items);
+      } else {
+        onValueChange(e.value[0], e.items[0]);
+      }
+    },
+    [multiple, onValueChange]
+  );
 
-  // const selectedValue: string[] = useMemo(() => {
-  //   if (multiple) {
-  //     return selected || [];
-  //   }
+  const selectedValue: string[] = useMemo(() => {
+    if (multiple) {
+      return selected || [];
+    }
 
-  //   return selected !== undefined ? [selected] : [];
-  // }, [multiple, selected]);
+    return selected !== undefined ? [selected] : [];
+  }, [multiple, selected]);
 
   return (
     <Select.Root
@@ -52,8 +68,8 @@ const ChakraSelect: FC<ChakraSelectProps> = ({
       focusRing='mixed'
       positioning={{ sameWidth: true, ...positioning }}
       collection={collection}
-      value={selected}
-      onValueChange={onValueChange}
+      value={selectedValue}
+      onValueChange={handleValueChange}
     >
       <Select.HiddenSelect />
       <Select.Trigger>
@@ -74,7 +90,7 @@ const ChakraSelect: FC<ChakraSelectProps> = ({
         <Select.Positioner>
           <Select.Content>
             {collection.items.map((item) => (
-              <Select.Item item={item.value} key={String(item.value)}>
+              <Select.Item item={item.value} key={item.value}>
                 {item.label}
                 <Select.ItemIndicator />
               </Select.Item>
@@ -85,5 +101,3 @@ const ChakraSelect: FC<ChakraSelectProps> = ({
     </Select.Root>
   );
 };
-
-export default ChakraSelect;

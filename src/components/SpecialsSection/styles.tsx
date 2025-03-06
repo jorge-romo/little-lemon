@@ -45,11 +45,6 @@ export const TagGroup = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  padding-bottom: 1rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.primary_outline};
-  }
 `;
 
 export const ItemsContainer = styled.div`
@@ -82,5 +77,10 @@ export const Items = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     grid-template-columns: 1fr;
     grid-gap: 1rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
+    border-top: 1px solid ${({ theme }) => theme.colors.primary_outline};
+    padding-top: 1rem;
   }
 `;

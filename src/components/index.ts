@@ -1,5 +1,7 @@
 export * from './Button';
 export * from './AboutSection';
+export * from './BookingConfirmation';
+export * from './BookingForm';
 export * from './Footer';
 export * from './Header';
 export * from './HeroSection';

@@ -10,12 +10,10 @@ const globalStyles = createGlobalStyle`
   -webkit-font-smoothing: antialiased;
 };
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: none;
-};
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
 
 h1 {
   font-family: ${({ theme }) => theme.font.family.heading};

@@ -27,7 +27,7 @@ export const Content = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  height: 40px;
+  height: 2.5rem;
   width: auto;
   object-fit: contain;
 `;

@@ -58,12 +58,12 @@ const buttonBaseStyles = css<ButtonStyledProps<WebTarget>>`
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    box-shadow: inset 0px 0px 9999px 99999px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 999999px 999999px rgba(0, 0, 0, 0.1);
   }
 
   &:active:not(:disabled) {
     border-style: none;
-    box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.25);
   }
 
   a&:hover:not(:disabled),

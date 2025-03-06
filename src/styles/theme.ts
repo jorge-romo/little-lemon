@@ -9,7 +9,7 @@ const theme: DefaultTheme = {
     primary: '#F4CE14',
     secondary: '#EE9972',
     disabled: '#BDBDBD',
-    focused: '#0077B6',
+    focused: '#EDEFEE',
 
     primary_text: '#000000',
     secondary_text: '#333333',
@@ -18,7 +18,7 @@ const theme: DefaultTheme = {
     highlight_secondary_text: '#495E57',
     highlight_tertiary_text: '#F4CE14',
     disabled_text: '#9E9E9E',
-    focused_text: '#0077B6',
+    focused_text: '#EDEFEE',
 
     primary_background: '#FFFFFF',
     secondary_background: '#495E57',
@@ -29,7 +29,7 @@ const theme: DefaultTheme = {
     primary_outline: '#333333',
     secondary_outline: '#EDEFEE',
     disabled_outline: '#BDBDBD',
-    focused_outline: '#0077B6',
+    focused_outline: '#FFFFFF',
 
     primary_component: '#F4CE14',
     secondary_component: '#EE9972',
@@ -37,7 +37,7 @@ const theme: DefaultTheme = {
     light_grey_component: '#EDEFEE',
     dark_grey_component: '#333333',
     disabled_component: '#BDBDBD',
-    focused_component: '#0077B6',
+    focused_component: '#EDEFEE',
   },
   border: {
     radius: {

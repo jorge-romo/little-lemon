@@ -43,8 +43,8 @@ export const Image = styled.img`
     ${({ theme }) => theme.border.radius.large} 0 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
-    width: 84px;
-    height: 84px;
+    width: 6rem;
+    height: 6rem;
     object-fit: cover;
     margin-right: 2rem;
     border-radius: ${({ theme }) => theme.border.radius.medium};
