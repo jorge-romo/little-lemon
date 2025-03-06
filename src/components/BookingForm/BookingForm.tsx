@@ -24,7 +24,7 @@ const fields: (keyof BookingFormData)[][] = [
 ];
 
 const BookingForm: FC<BookingFormProps> = ({
-  data,
+  defaultValues: defaultFormData,
   getOccasions,
   getTimeSlots,
   onSubmitForm,
@@ -41,7 +41,7 @@ const BookingForm: FC<BookingFormProps> = ({
     trigger,
   } = useForm<BookingFormData>({
     resolver: zodResolver(bookingSchema),
-    defaultValues: { guests: 1, ...(data ?? undefined) },
+    defaultValues: { guests: 1, ...(defaultFormData ?? undefined) },
   });
   const registerWithMask = useHookFormMask(register);
 
@@ -156,6 +156,7 @@ const BookingForm: FC<BookingFormProps> = ({
                   onValueChange={(value) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
                   options={timeSlots}
+                  data-testid='time-input'
                   css={{ ...inputStyle, ...formInputStyle }}
                 />
               )}
@@ -184,6 +185,7 @@ const BookingForm: FC<BookingFormProps> = ({
                     field.onChange(valueAsNumber || 1)
                   }
                   onBlur={() => field.onBlur()}
+                  data-testid='guests-input'
                   css={{ ...inputStyle, ...formInputStyle }}
                 />
               )}
@@ -207,6 +209,7 @@ const BookingForm: FC<BookingFormProps> = ({
                   onValueChange={(value) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
                   options={occasions}
+                  data-testid='occasion-input'
                   css={{ ...inputStyle, ...formInputStyle }}
                 />
               )}
@@ -223,6 +226,7 @@ const BookingForm: FC<BookingFormProps> = ({
             <Textarea
               {...register('specialRequest')}
               rows={3}
+              data-testid='special-request-input'
               css={{ ...inputStyle, ...formInputStyle }}
             />
           )}
@@ -239,6 +243,7 @@ const BookingForm: FC<BookingFormProps> = ({
             render={({ inputStyle: formInputStyle }) => (
               <Input
                 {...register('firstName')}
+                data-testid='first-name-input'
                 css={{ ...inputStyle, ...formInputStyle }}
               />
             )}
@@ -251,6 +256,7 @@ const BookingForm: FC<BookingFormProps> = ({
             render={({ inputStyle: formInputStyle }) => (
               <Input
                 {...register('lastName')}
+                data-testid='last-name-input'
                 css={{ ...inputStyle, ...formInputStyle }}
               />
             )}
@@ -265,6 +271,7 @@ const BookingForm: FC<BookingFormProps> = ({
           render={({ inputStyle: formInputStyle }) => (
             <Input
               {...registerWithMask('phone', phoneMask)}
+              data-testid='phone-input'
               css={{ ...inputStyle, ...formInputStyle }}
             />
           )}
@@ -279,18 +286,25 @@ const BookingForm: FC<BookingFormProps> = ({
           render={({ inputStyle: formInputStyle }) => (
             <Input
               {...register('email')}
+              data-testid='email-input'
               css={{ ...inputStyle, ...formInputStyle }}
             />
           )}
         />
       </StepContent>
       <Footer>
-        <Button type='button' onClick={prevStep} disabled={step !== 1}>
+        <Button
+          type='button'
+          onClick={prevStep}
+          disabled={step !== 1}
+          data-testid='back-button'
+        >
           Back
         </Button>
         <Button
           type='button'
           onClick={nextStep}
+          data-testid='next-button'
           style={{ display: step !== 0 ? 'none' : undefined }}
         >
           Next
@@ -298,6 +312,7 @@ const BookingForm: FC<BookingFormProps> = ({
         <Button
           type='submit'
           onClick={nextStep}
+          data-testid='submit-button'
           style={{ display: step !== 1 ? 'none' : undefined }}
         >
           Reserve

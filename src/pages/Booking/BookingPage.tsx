@@ -77,7 +77,7 @@ const BookingPage: FC = () => {
             <h1 className='head-text heading-2'>Reserve a table</h1>
             <BookingForm
               className='form-wrapper'
-              data={formData}
+              defaultValues={formData}
               getOccasions={getOccasions}
               getTimeSlots={getTimeSlots}
               onSubmitForm={formSubmitHandler}

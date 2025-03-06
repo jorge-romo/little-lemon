@@ -25,3 +25,9 @@ dist-ssr
 
 # auto generated theme form chakra ui
 /theme
+
+# Jest
+/coverage
+/junit.xml
+/coverage-final.json
+/coverage/lcov-report

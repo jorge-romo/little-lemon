@@ -33,7 +33,7 @@ export type SubmitFormHandler = (
 ) => void;
 
 export interface BookingFormProps extends HtmlHTMLAttributes<HTMLDivElement> {
-  data?: Partial<BookingFormData> | null;
+  defaultValues?: Partial<BookingFormData> | null;
   getTimeSlots: GetTimeSlotsHandler;
   getOccasions: GetOccasionsHandler;
   onSubmitForm: SubmitFormHandler;
