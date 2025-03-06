@@ -17,3 +17,9 @@ export function isPhoneNumber(value: string | undefined): boolean {
   );
   return phoneRegex.test(value);
 }
+
+export function isNotEmptyArray<T = unknown>(
+  arr: T[] | null | undefined
+): arr is [T, ...T[]] {
+  return !!arr && arr.length > 0;
+}

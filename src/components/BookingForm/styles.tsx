@@ -28,5 +28,5 @@ export const Footer = styled.div`
 
 export const inputStyle = defineStyle({
   '--focus-ring-color': 'colors.outline.bg',
-  '--chakra-colors-border': 'colors.outline.primary',
+  '--chakra-colors-border': 'colors.outline.solid',
 });

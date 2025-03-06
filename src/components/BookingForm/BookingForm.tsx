@@ -14,7 +14,12 @@ import {
 import { Button } from '../Button';
 import { capitalize } from '../../utils/string';
 import { phoneMask } from '../../utils/type';
-import { BookingFormData, BookingFormProps, bookingSchema } from './types';
+import {
+  BookingFormData,
+  BookingFormProps,
+  DynamicDropdownValues,
+  getBookingSchema,
+} from './types';
 import { Footer, Form, inputStyle } from './styles';
 import { StepContent } from './StepContent';
 
@@ -31,6 +36,10 @@ const BookingForm: FC<BookingFormProps> = ({
   style,
   ...rest
 }) => {
+  const [selectValues, setSelectValues] = useState<
+    DynamicDropdownValues<ChakraSelectOption>
+  >({ occasions: [], timeSlots: [] });
+  const [step, setStep] = useState<number>(0);
   const {
     register,
     handleSubmit,
@@ -39,33 +48,48 @@ const BookingForm: FC<BookingFormProps> = ({
     setValue,
     formState: { errors, defaultValues },
     trigger,
-  } = useForm<BookingFormData>({
-    resolver: zodResolver(bookingSchema),
-    defaultValues: { guests: 1, ...(defaultFormData ?? undefined) },
+    resetField,
+  } = useForm<BookingFormData, typeof selectValues>({
+    context: selectValues,
+    resolver: (values, context, options) => {
+      const param = Object.fromEntries(
+        Object.entries(context ?? {}).map(([key, value]) => [
+          key,
+          value.map((item) => item.value),
+        ])
+      ) as DynamicDropdownValues<string>;
+      const createResolver = zodResolver(getBookingSchema(param));
+      return createResolver(values, context, options);
+    },
+    defaultValues: {
+      guests: 1,
+      time: '00:30',
+      ...(defaultFormData ?? undefined),
+    },
   });
   const registerWithMask = useHookFormMask(register);
-
-  const [occasions, setOccasions] = useState<ChakraSelectOption[]>([]);
-  const [timeSlots, setTimeSlots] = useState<ChakraSelectOption[]>([]);
-  const [step, setStep] = useState<number>(0);
   const selectedDate = watch('date');
 
   useEffect(() => {
     getOccasions()
       .then((data) => {
-        setOccasions(
-          data.map<ChakraSelectOption>((item) => ({
+        setSelectValues((old) => ({
+          ...old,
+          occasions: data.map<ChakraSelectOption>((item) => ({
             label: capitalize(item),
             value: item,
-          }))
-        );
-        const defaultValue =
-          defaultValues?.occasion && data.includes(defaultValues.occasion)
-            ? defaultValues.occasion
-            : '';
-        setValue('occasion', defaultValue);
+          })),
+        }));
       })
-      .catch(() => setOccasions([]));
+      .catch(() =>
+        setSelectValues((old) => ({
+          ...old,
+          occasions: [],
+        }))
+      )
+      .finally(() => {
+        resetField('time');
+      });
   }, []);
 
   useEffect(() => {
@@ -73,19 +97,23 @@ const BookingForm: FC<BookingFormProps> = ({
       // Fetch available time slots when the date changes
       getTimeSlots(selectedDate)
         .then((data) => {
-          setTimeSlots(
-            data.map<ChakraSelectOption>((item) => ({
+          setSelectValues((old) => ({
+            ...old,
+            timeSlots: data.map<ChakraSelectOption>((item) => ({
               label: capitalize(item),
               value: item,
-            }))
-          );
-          const defaultValue =
-            defaultValues?.time && data.includes(defaultValues.time)
-              ? defaultValues.time
-              : '';
-          setValue('time', defaultValue);
+            })),
+          }));
         })
-        .catch(() => setTimeSlots([]));
+        .catch(() =>
+          setSelectValues((old) => ({
+            ...old,
+            timeSlots: [],
+          }))
+        )
+        .finally(() => {
+          resetField('time');
+        });
     }
   }, [selectedDate, setValue]);
 
@@ -155,7 +183,7 @@ const BookingForm: FC<BookingFormProps> = ({
                   value={field.value}
                   onValueChange={(value) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
-                  options={timeSlots}
+                  options={selectValues.timeSlots}
                   data-testid='time-input'
                   css={{ ...inputStyle, ...formInputStyle }}
                 />
@@ -208,7 +236,7 @@ const BookingForm: FC<BookingFormProps> = ({
                   value={field.value ?? ''}
                   onValueChange={(value) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
-                  options={occasions}
+                  options={selectValues.occasions}
                   data-testid='occasion-input'
                   css={{ ...inputStyle, ...formInputStyle }}
                 />
