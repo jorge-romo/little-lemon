@@ -12,7 +12,7 @@ import {
   ChakraStepperInput,
 } from '../ui';
 import { Button } from '../Button';
-import { capitalize } from '../../utils/string';
+import { capitalize } from '../../utils/functions';
 import { phoneMask } from '../../utils/type';
 import {
   BookingFormData,

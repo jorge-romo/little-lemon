@@ -15,8 +15,8 @@ export const getBookingSchema = ({
     date: z.string().min(1, 'Date is required'),
     time: isNotEmptyArray(timeSlots)
       ? z.enum(timeSlots, {
-          invalid_type_error: 'Please choose a valid option',
-          message: 'Please choose a valid option',
+          invalid_type_error: 'Please select a valid time',
+          message: 'Please select a valid time',
           required_error: 'Time is required',
         })
       : z
@@ -28,7 +28,7 @@ export const getBookingSchema = ({
       .max(20, 'Max 20 guests allowed'),
     occasion: isNotEmptyArray(occasions)
       ? z
-          .enum(occasions, { message: 'Please choose a valid option' })
+          .enum(occasions, { message: 'Please select a valid occasion' })
           .optional()
       : z.string().optional(),
     firstName: z.string().min(1, 'First name is required'),
@@ -53,7 +53,8 @@ export type SubmitFormHandler = (
   event?: BaseSyntheticEvent
 ) => void;
 
-export interface BookingFormProps extends HtmlHTMLAttributes<HTMLDivElement> {
+export interface BookingFormProps
+  extends Omit<HtmlHTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   defaultValues?: Partial<BookingFormData> | null;
   getTimeSlots: GetTimeSlotsHandler;
   getOccasions: GetOccasionsHandler;

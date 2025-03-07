@@ -1,9 +1,6 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "ESNext",
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "skipLibCheck": true,
     "isolatedModules": false,

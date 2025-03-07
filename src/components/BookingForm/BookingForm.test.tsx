@@ -1,92 +1,190 @@
-// import { screen } from "@testing-library/react";
-// import userEvent from "@testing-library/user-event";
-import { act, fireEvent, screen, render } from '../../utils/tests-ts';
-import {
-  submitAPI,
-  fetchTimeSlotsAPI,
-  fetchOccasionsAPI,
-} from '../../utils/api';
+import { fireEvent, render, screen, act, within } from '../../utils/tests-ts';
 import BookingForm from './BookingForm';
 
-jest.mock('../../utils/api');
+const mockGetOccasions = jest.fn(() =>
+  Promise.resolve(['Birthday', 'Anniversary'])
+);
+const mockGetTimeSlots = jest.fn(() => Promise.resolve(['6:00 PM', '7:00 PM']));
+const mockOnSubmitForm = jest.fn();
 
-describe('BookingForm', () => {
-  test('All fields should be exists after initialization', () => {
-    act(() =>
+describe('BookingForm Component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('renders without crashing', async () => {
+    await act(async () =>
       render(
         <BookingForm
-          getTimeSlots={(date) => fetchTimeSlotsAPI(new Date(date))}
-          getOccasions={fetchOccasionsAPI}
-          onSubmitForm={submitAPI}
+          getOccasions={mockGetOccasions}
+          getTimeSlots={mockGetTimeSlots}
+          onSubmitForm={mockOnSubmitForm}
         />
       )
     );
 
-    const choseDateLabel = screen.getByText('Date');
-    expect(choseDateLabel).toBeInTheDocument();
-    const choseDateField = screen.getByTestId('date-input');
-    expect(choseDateField).toBeInTheDocument();
-
-    const choseTimeLabel = screen.getByText('Time');
-    expect(choseTimeLabel).toBeInTheDocument();
-    const choseTimeField = screen.getByTestId('time-input');
-    expect(choseTimeField).toBeInTheDocument();
-
-    const numberGuestLabel = screen.getByText('Number of Guests');
-    expect(numberGuestLabel).toBeInTheDocument();
-    const numberGuestField = screen.getByTestId('guests-input');
-    expect(numberGuestField).toBeInTheDocument();
-
-    const occasionLabel = screen.getByText('Occasion');
-    expect(occasionLabel).toBeInTheDocument();
-    const occasionField = screen.getByTestId('occasion-input');
-    expect(occasionField).toBeInTheDocument();
-
-    const specialRequestLabel = screen.getByText('Special Request');
-    expect(specialRequestLabel).toBeInTheDocument();
-    const specialRequestField = screen.getByTestId('special-request-input');
-    expect(specialRequestField).toBeInTheDocument();
-
-    const firstNameLabel = screen.getByText('First Name');
-    expect(firstNameLabel).toBeInTheDocument();
-    const firstNameField = screen.getByTestId('first-name-input');
-    expect(firstNameField).toBeInTheDocument();
-
-    const lastNameLabel = screen.getByText('Last Name');
-    expect(lastNameLabel).toBeInTheDocument();
-    const lastNameField = screen.getByTestId('last-name-input');
-    expect(lastNameField).toBeInTheDocument();
-
-    const emailLabel = screen.getByText('Email');
-    expect(emailLabel).toBeInTheDocument();
-    const emailField = screen.getByTestId('email-input');
-    expect(emailField).toBeInTheDocument();
-
-    const phoneLabel = screen.getByText('Phone Number');
-    expect(phoneLabel).toBeInTheDocument();
-    const phoneField = screen.getByTestId('phone-input');
-    expect(phoneField).toBeInTheDocument();
+    expect(screen.getByTestId('date-input')).toBeInTheDocument();
+    expect(screen.getByTestId('time-input')).toBeInTheDocument();
+    expect(screen.getByTestId('guests-input')).toBeInTheDocument();
+    expect(screen.getByTestId('occasion-input')).toBeInTheDocument();
+    expect(screen.getByTestId('special-request-input')).toBeInTheDocument();
+    expect(screen.getByTestId('first-name-input')).toBeInTheDocument();
+    expect(screen.getByTestId('last-name-input')).toBeInTheDocument();
+    expect(screen.getByTestId('email-input')).toBeInTheDocument();
+    expect(screen.getByTestId('phone-input')).toBeInTheDocument();
+    expect(screen.getByTestId('back-button')).toBeInTheDocument();
+    expect(screen.getByTestId('next-button')).toBeInTheDocument();
+    expect(screen.getByTestId('submit-button')).toBeInTheDocument();
   });
 
-  // test('Step 2 fields should be exists after click next', () => {
-  //   render(
-  //     <BookingForm
-  //       defaultValues={{
-  //         date: new Date().toDateString(),
-  //         guests: 1,
-  //         occasion: '',
-  //         time: '16:00',
-  //         specialRequest: '',
-  //       }}
-  //       getTimeSlots={(date) => fetchTimeSlotsAPI(new Date(date))}
-  //       getOccasions={fetchOccasionsAPI}
-  //       onSubmitForm={submitAPI}
-  //     />
-  //   );
+  it('occasion list should be fetched and displayed', async () => {
+    await act(async () =>
+      render(
+        <BookingForm
+          getOccasions={mockGetOccasions}
+          getTimeSlots={mockGetTimeSlots}
+          onSubmitForm={mockOnSubmitForm}
+        />
+      )
+    );
 
-  //   const nextBtn = screen.getByTestId('next-button');
-  //   expect(nextBtn).toBeInTheDocument();
+    expect(mockGetOccasions).toHaveBeenCalled();
 
-  //   fireEvent.click(nextBtn);
-  // });
+    const selectRoot = screen.getByTestId('occasion-input').closest('div')!;
+    expect(selectRoot).toBeInTheDocument();
+    const selectTrigger = within(selectRoot).getByRole('combobox');
+    expect(selectTrigger).toBeInTheDocument();
+    await act(async () => fireEvent.click(selectTrigger));
+
+    const selectListRoot = screen.queryByRole('listbox')!;
+    expect(selectListRoot).toBeInTheDocument();
+    expect(within(selectListRoot).getByText('Birthday')).toBeInTheDocument();
+    expect(within(selectListRoot).getByText('Anniversary')).toBeInTheDocument();
+  });
+
+  it('time list fetch api should be called when date changes', async () => {
+    await act(async () =>
+      render(
+        <BookingForm
+          getOccasions={mockGetOccasions}
+          getTimeSlots={mockGetTimeSlots}
+          onSubmitForm={mockOnSubmitForm}
+        />
+      )
+    );
+
+    await act(async () =>
+      fireEvent.change(screen.getByTestId('date-input'), {
+        target: { value: '2025-01-01' },
+      })
+    );
+    expect(mockGetTimeSlots).toHaveBeenCalled();
+
+    const selectRoot = screen.getByTestId('time-input').closest('div')!;
+    expect(selectRoot).toBeInTheDocument();
+    const selectTrigger = within(selectRoot).getByRole('combobox');
+    expect(selectTrigger).toBeInTheDocument();
+    await act(async () => fireEvent.click(selectTrigger));
+
+    const selectListRoot = screen.queryByRole('listbox')!;
+    expect(selectListRoot).toBeInTheDocument();
+    expect(within(selectListRoot).queryByText('6:00 PM')).toBeInTheDocument();
+    expect(within(selectListRoot).queryByText('7:00 PM')).toBeInTheDocument();
+  });
+
+  it('validates required fields before proceeding to next step', async () => {
+    await act(async () =>
+      render(
+        <BookingForm
+          getOccasions={mockGetOccasions}
+          getTimeSlots={mockGetTimeSlots}
+          onSubmitForm={mockOnSubmitForm}
+        />
+      )
+    );
+
+    await act(async () => fireEvent.click(screen.getByTestId('next-button')));
+
+    expect(screen.getByText('Date is required')).toBeInTheDocument();
+    expect(screen.getByText('Time is required')).toBeInTheDocument();
+  });
+
+  it('validate with schema for select fields', async () => {
+    await act(async () =>
+      render(
+        <BookingForm
+          defaultValues={{
+            date: '2025-01-01',
+            time: '00:00',
+            occasion: 'Nothing',
+          }}
+          getOccasions={mockGetOccasions}
+          getTimeSlots={mockGetTimeSlots}
+          onSubmitForm={mockOnSubmitForm}
+        />
+      )
+    );
+
+    await act(async () => fireEvent.click(screen.getByTestId('next-button')));
+
+    expect(screen.getByText('Please select a valid time')).toBeInTheDocument();
+    expect(
+      screen.getByText('Please select a valid occasion')
+    ).toBeInTheDocument();
+  });
+
+  it('validates required fields in second step before submit form', async () => {
+    await act(async () =>
+      render(
+        <BookingForm
+          defaultValues={{
+            date: '2025-01-01',
+            time: '6:00 PM',
+            guests: 2,
+          }}
+          getOccasions={mockGetOccasions}
+          getTimeSlots={mockGetTimeSlots}
+          onSubmitForm={mockOnSubmitForm}
+        />
+      )
+    );
+
+    await act(async () => fireEvent.click(screen.getByTestId('next-button')));
+
+    /** @see https://github.com/testing-library/jest-dom/issues/202#issuecomment-671132519 */
+    expect(screen.queryByText('Date is required')).not.toBeInTheDocument();
+    expect(screen.queryByText('Time is required')).not.toBeInTheDocument();
+
+    await act(async () => fireEvent.click(screen.getByTestId('submit-button')));
+
+    expect(screen.getByText('First name is required')).toBeInTheDocument();
+    expect(screen.getByText('Email is required')).toBeInTheDocument();
+  });
+
+  it('submits the form successfully when valid data is provided', async () => {
+    await act(async () =>
+      render(
+        <BookingForm
+          defaultValues={{
+            date: '2025-01-01',
+            time: '6:00 PM',
+            guests: 2,
+            occasion: 'Anniversary',
+            firstName: 'John',
+            lastName: 'Doe',
+            phone: '(123) 456-7890',
+            email: 'john.doe@example.com',
+          }}
+          getOccasions={mockGetOccasions}
+          getTimeSlots={mockGetTimeSlots}
+          onSubmitForm={mockOnSubmitForm}
+        />
+      )
+    );
+
+    await act(async () => fireEvent.click(screen.getByTestId('next-button')));
+    await act(async () => fireEvent.click(screen.getByTestId('submit-button')));
+
+    expect(mockOnSubmitForm).toHaveBeenCalled();
+  });
 });

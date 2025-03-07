@@ -19,3 +19,8 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
+/** @see https://github.com/jsdom/jsdom/issues/1695#issuecomment-449931788 */
+/** @see https://www.chakra-ui.com/docs/components/concepts/testing */
+window.Element.prototype.scrollTo = () => {};
+window.Element.prototype.scrollIntoView = () => {};

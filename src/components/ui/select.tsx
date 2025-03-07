@@ -6,6 +6,7 @@ import {
   CloseButton,
 } from '@chakra-ui/react';
 import styled from 'styled-components';
+import { separateBy } from '../../utils/functions';
 
 const SelectTrigger = styled(Select.Trigger)`
   &&:is([aria-expanded='true'], [data-expanded], [data-state='expanded']) {
@@ -79,9 +80,17 @@ export const ChakraSelect: FC<ChakraSelectProps> = ({
     return value !== undefined ? [value] : [];
   }, [multiple, value]);
 
+  const [dataAttributesEntries, restPropsEntries] = separateBy(
+    Object.entries(rest),
+    ([key]) => (key.startsWith('data-') ? 0 : 1)
+  );
+
+  const dataAttributes = Object.fromEntries(dataAttributesEntries);
+  const restProps = Object.fromEntries(restPropsEntries);
+
   return (
     <Select.Root
-      {...rest}
+      {...restProps}
       multiple={multiple}
       focusRing='mixed'
       positioning={{ sameWidth: true, ...positioning }}
@@ -90,7 +99,7 @@ export const ChakraSelect: FC<ChakraSelectProps> = ({
       value={selected}
       onValueChange={handleValueChange}
     >
-      {!asChild && <Select.HiddenSelect />}
+      {!asChild && <Select.HiddenSelect {...dataAttributes} />}
       <Select.Control>
         <SelectTrigger>
           <Select.ValueText>
